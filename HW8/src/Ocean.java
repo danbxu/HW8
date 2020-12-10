@@ -5,14 +5,13 @@ public class Ocean {
 	int shotsFired; 
 	int hitCount; //hit shit, increase it but hitting the same spot don't increase it
 	int shipsSunk; //increment to 10 total ships sunk
-	boolean gameState; 
+
 	
 	
 	void Ocean() {
 		shotsFired = 0;
 		hitCount = 0;
 		shipsSunk = 0;
-		gameState = false;
 		
 		//adds emptySea into null
 		for (int i = 0; i < 10; i++) {
@@ -36,11 +35,11 @@ public class Ocean {
 	
 	boolean isOccupied(int row, int column) {
 		if (ships [row][column].getShipType().equals("empty")) { //would this have an issue with all different types of ships
-			System.out.println("location is emptySea");
+			//System.out.println("location is emptySea");
 			return false;
 		}
 		else {
-			System.out.println("location is occupied");
+			//System.out.println("location is occupied");
 			return true;
 		}
 	}
@@ -66,11 +65,11 @@ public class Ocean {
 	
 	boolean isGameOver() {
 		if (shipsSunk == 10) {
-			gameState = true;
+		
 			return true;
 		}
 		else {
-			gameState = false;
+
 			return false;
 		}
 	}

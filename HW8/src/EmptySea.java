@@ -24,8 +24,5 @@ public class EmptySea extends Ship {
 	String getShipType() {
 		return "empty";
 	}
-	
-	
-	//also need to override isSunk, shootAt, toString
 
 }
