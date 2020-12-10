@@ -13,5 +13,13 @@ class JTesting {
 	void test() {
 		fail("Not yet implemented");
 	}
+	
+	
+	//Testing Ship class
+	@Test
+	void testLengthGetterandSetter() {
+		
+	}
+	
 
 }
