@@ -1,7 +1,7 @@
 
 public class Ocean {
 	
-	Ship[][] ships = new Ship[10][10];
+	static Ship[][] ships = new Ship[10][10];
 	int shotsFired; 
 	int hitCount; //hit shit, increase it but hitting the same spot don't increase it
 	int shipsSunk; //increment to 10 total ships sunk
@@ -27,10 +27,15 @@ public class Ocean {
 		//initializes any game variables like shots fired.
 	}
 	
+	//checking the location to put a new ship randomly 
+	//boundary checks 
 	
 	void placeAllShipsRandomly() {
 		//start with big ships first
 		//put it here or try it with our random gen location
+		//check the ocean and 1 to all loations and buffer 1 cell around the boat       - - - -  //nested forloops for the grid i,j i - 1 , i + 1, j - 1, j + 1
+		
+		//this will create 
 	}
 	
 	boolean isOccupied(int row, int column) {

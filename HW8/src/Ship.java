@@ -6,11 +6,11 @@ public abstract class Ship {
 	int length; //number of squares occupied by ship and empty sea location has length of 1
 	boolean horizontal; //true if the ship occupies a single row, false otherwise
 	boolean[] hit = new boolean [4]; //array of booleans telling weather that part of ship has been hit
-	//note this needs to be overriden if different types of ships
+	 //note this needs to be overriden if different types of ships
 	 
-	int getLength() {
-		return length;
-	}
+	abstract int getLength(); //to be overridden
+	 
+	abstract String getShipType(); //to be overridden 
 	
 	int getBowRow() {
 		return bowRow;
@@ -21,7 +21,7 @@ public abstract class Ship {
 	}
 
 	boolean isHorizontal() {
-		return horizontal;
+		return horizontal; //true if ship occupies a single row, otherwise false
 	}
 	
 	void setBowRow(int row) {
@@ -35,13 +35,13 @@ public abstract class Ship {
 	void setHorizontal(boolean horizontal) {
 		this.horizontal = horizontal;
 	}
-	
-	
-	abstract String getShipType();
-	//to be overrriden 
+
 	
 	boolean okToPlaceShipAt(int row, int column, boolean horizontal, Ocean ocean) {
 		//TODO this can't stick out of the array
+		//not overlap, not touch another ship vertically/diagonally/horizontally. 
+		//says whether it is legal to do so 
+		
 		return true;
 	}
 	

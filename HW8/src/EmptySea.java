@@ -24,5 +24,10 @@ public class EmptySea extends Ship {
 	String getShipType() {
 		return "empty";
 	}
+	
+	@Override 
+	public int getLength() {
+		return length;
+	}
 
 }
