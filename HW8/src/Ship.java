@@ -49,14 +49,14 @@ public abstract class Ship {
 		
 	}
 	
-	boolean shootAt(int row, int column) {
-		//if it isn't sunken
+	boolean shootAt(int row, int column, Ocean ocean) {
+
+		Ship shipAt = ships[row][column];
+
 		return true;
 	}
 	
 	boolean isSunk() {
-		//forloop
-		//if every part of the ship has been hit
 		return true;
 	}
 	
