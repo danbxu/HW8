@@ -8,6 +8,10 @@ public class Submarine extends Ship {
 	
 	Submarine() {
 		this.length = 1;
+		this.hit = new boolean[4]; 
+		for (int i = 0; i < length; i++) {
+			hit[i] = false;
+		}
 	}
 	
 	@Override 
@@ -18,6 +22,22 @@ public class Submarine extends Ship {
 	@Override
 	String getShipType() {
 		return "Submarine";
+	}
+	
+	@Override 
+	boolean isSunk() {
+		int counter = 0;
+		for (int i = 0; i < 1; i++) {
+			if (hit[i] == true) {
+				counter++;
+			}
+		}
+		if (counter == 1) {
+			return true;
+		}
+		else {
+			return false;
+		}
 	}
 	
 }

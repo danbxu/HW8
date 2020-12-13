@@ -51,7 +51,7 @@ public abstract class Ship {
 	
 	boolean shootAt(int row, int column, Ocean ocean) {
 
-		Ship shipAt = ships[row][column];
+		//feed in an ocean so it it's always referring to the same ocean 
 
 		return true;
 	}

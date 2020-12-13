@@ -5,7 +5,7 @@ public class Battleship extends Ship {
 
 	Battleship() {
 		this.length = 4;
-		this.hit = new boolean[4];
+		this.hit = new boolean[4]; 
 		for (int i = 0; i < length; i++) {
 			hit[i] = false;
 		}

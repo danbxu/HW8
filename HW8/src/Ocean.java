@@ -1,3 +1,4 @@
+import java.util.Random;
 
 public class Ocean {
 	
@@ -5,9 +6,16 @@ public class Ocean {
 	int shotsFired; 
 	int hitCount; //hit shit, increase it but hitting the same spot don't increase it
 	int shipsSunk; //increment to 10 total ships sunk
+	
+	
+	//Random 
+	Random randomRow = new Random();
+	Random randomColumn = new Random();
+	Random RorC = new Random();
+	int upperbound = 10; //0-9
+	int randomRowOrColumn = 2;
+	
 
-	
-	
 	void Ocean() {
 		shotsFired = 0;
 		hitCount = 0;
@@ -30,7 +38,38 @@ public class Ocean {
 	//checking the location to put a new ship randomly 
 	//boundary checks 
 	
-	void placeAllShipsRandomly() {
+	public void placeAllShipsRandomly(Ship ship) { //feed in a ship so that the code is cleaner
+		
+		int randomR = randomRow.nextInt(upperbound);
+		int randomC = randomColumn.nextInt(upperbound);
+		int rowOrColumn = RorC.nextInt(randomRowOrColumn); //this will determine whether to place vertically or horizontally
+		
+		int rows;
+		
+		// 0  = horizontal
+		// 1 = vertical
+		
+		//boundary check and check location
+		
+		if (ships[randomR][randomC] == null) {
+			if (rowOrColumn == 0) { //if to be placed horizontally
+				
+			
+			
+				
+				
+			
+			}
+			
+			if(rowOrColumn == 1) { //if to be placed vertically
+				ship.getLength();
+				System.out.println("to be put vertically and length is" + ship.getLength());
+			}
+		}
+	
+		
+		
+		
 		//start with big ships first
 		//put it here or try it with our random gen location
 		//check the ocean and 1 to all loations and buffer 1 cell around the boat       - - - -  //nested forloops for the grid i,j i - 1 , i + 1, j - 1, j + 1
@@ -91,6 +130,15 @@ public class Ocean {
 		//'-' to show a location you have fired and nothing is there
 		//'x' to indicate a sunken ship
 		//'.'hitCount indicate a location that you have never fired upon
+	}
+	
+	
+	public static void main(String[] args) {
+		Ocean a = new Ocean();
+		Battleship b = new Battleship();
+		Cruiser c = new Cruiser();
+		a.placeAllShipsRandomly(b);
+		a.placeAllShipsRandomly(c);
 	}
 
 }
