@@ -5,14 +5,13 @@ public class RC {
  static int digit = 0;
 
 	public static String killCommas(String string) {
-		if (string == null) return "";
-			//throw new IllegalArgumentException ("No string");
+		if (string == "") throw new IllegalArgumentException ("No string");
 		if (string.length() == 1) {
 			if (string.charAt(0) == ',') {
-				return ""; //this return needs to be fixed
+				return ""; 
 			}
 			else {
-				return string; //this return needs to be fixed
+				return string; 
 			}
 		}
 		if (string.charAt(0) == ',') {
@@ -25,19 +24,19 @@ public class RC {
 	
 	
 //perhaps create a helper function	
+	
+	
 
 	public static int sumDigits(int num) {
-		int hold;
-	
-			//throw new IllegalArgumentException ("num is negative");
 		if (num == 0) {
-			return digit;
+			int output = digit;
+			digit = 0;
+			return output;
 		}
-		if (num < 0) return -1;
+		if (num < 0) throw new IllegalArgumentException ("No negative numbers");
 		else {
-			hold = num;
 			digit = digit + num % 10;
-			return sumDigits(hold / 10);
+			return sumDigits(num / 10);
 		}
 	}
 	
@@ -62,8 +61,10 @@ public class RC {
 //		System.out.println(killCommas("lma,o,"));
 //		System.out.println(killCommas(",,"));
 //		System.out.println(killCommas("a,c,d,,,"));
+//		System.out.println(killCommas(""));
 		
-		System.out.println(sumDigits(111111)); // Need to ask about if i need to clear the variables
+		System.out.println(sumDigits(111)); // Need to ask about if i need to clear the variables
+		System.out.println(sumDigits(123));
 //		int[] arr = new int[] {1};
 //
 //		
