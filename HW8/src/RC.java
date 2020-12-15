@@ -2,7 +2,7 @@ import java.util.Arrays;
 
 public class RC {
 
-	static int digit = 0;
+ static int digit = 0;
 
 	public static String killCommas(String string) {
 		if (string == null) return "";
@@ -22,9 +22,13 @@ public class RC {
 			return string.charAt(0) + killCommas(string.substring(1));
 		}
 	}
+	
+	
+//perhaps create a helper function	
 
 	public static int sumDigits(int num) {
 		int hold;
+	
 			//throw new IllegalArgumentException ("num is negative");
 		if (num == 0) {
 			return digit;
@@ -40,7 +44,7 @@ public class RC {
 	public void powerSet(int[] arr) {
 		
 		if (arr.length == 0) {
-			System.out.println("Empty array");
+			System.out.println("[]");
 		}
 		if (arr.length == 1) {
 			System.out.println("{" + arr + "}");
@@ -59,11 +63,11 @@ public class RC {
 //		System.out.println(killCommas(",,"));
 //		System.out.println(killCommas("a,c,d,,,"));
 		
-//		System.out.println(sumDigits(892)); // Need to ask about if i need to clear the variables
-		int[] arr = new int[] {1};
-
-		
-		System.out.println(Arrays.toString(arr));
+		System.out.println(sumDigits(111111)); // Need to ask about if i need to clear the variables
+//		int[] arr = new int[] {1};
+//
+//		
+//		System.out.println(Arrays.toString(arr));
 		
 	
 
