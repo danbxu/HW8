@@ -21,6 +21,7 @@ public abstract class Ship {
 	}
 
 	boolean isHorizontal() {
+		//TODO
 		return horizontal; //true if ship occupies a single row, otherwise false
 	}
 	
@@ -41,12 +42,12 @@ public abstract class Ship {
 		//TODO this can't stick out of the array
 		//not overlap, not touch another ship vertically/diagonally/horizontally. 
 		//says whether it is legal to do so 
-		
+		//maybe use nested forloop
 		return true;
 	}
 	
 	void placeShipAt(int row, int column, boolean horizontal, Ocean ocean) {
-		
+		//addded ocean because it is easier to create one ocean 
 	}
 	
 	boolean shootAt(int row, int column, Ocean ocean) {

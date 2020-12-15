@@ -40,11 +40,16 @@ public class Ocean {
 	
 	public void placeAllShipsRandomly(Ship ship) { //feed in a ship so that the code is cleaner
 		
+		
 		int randomR = randomRow.nextInt(upperbound);
 		int randomC = randomColumn.nextInt(upperbound);
 		int rowOrColumn = RorC.nextInt(randomRowOrColumn); //this will determine whether to place vertically or horizontally
 		
 		int rows;
+		
+		1111
+		
+		
 		
 		// 0  = horizontal
 		// 1 = vertical
@@ -53,20 +58,36 @@ public class Ocean {
 		
 		if (ships[randomR][randomC] == null) {
 			if (rowOrColumn == 0) { //if to be placed horizontally
-				
 			
-			
+				//for loop checking row
 				
 				
-			
+				check by index
+				
+				//while loop for placing the ships 
+				
+				00000000
+				o      0 
+				o      0      
+				o      0 
+				o      0 
+				o      0 
+				00000000
 			}
 			
 			if(rowOrColumn == 1) { //if to be placed vertically
-				ship.getLength();
+				//forloop checking column
+				
+				
 				System.out.println("to be put vertically and length is" + ship.getLength());
 			}
 		}
 	
+		
+		//perhaps use
+		
+		//ship.setBowColumn(holder)
+		//ship.getBowRow(holder)
 		
 		
 		

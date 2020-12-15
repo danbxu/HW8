@@ -10,6 +10,8 @@ public class Battleship extends Ship {
 			hit[i] = false;
 		}
 	}
+	
+	//checking all index of ship or ocean 
 
 	@Override 
 	public int getLength() {
@@ -18,7 +20,11 @@ public class Battleship extends Ship {
 
 	@Override
 	public String toString() {
-		//implement something like if sunk, 
+		
+	//maybe use a for loop
+
+		
+		
 		return "S"; //return x if the ship is sunk
 	}
 

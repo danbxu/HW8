@@ -1,50 +1,71 @@
+import java.util.Arrays;
 
 public class RC {
 
-	//problem 1
-
-	//recursion charAt
-
+	static int digit = 0;
 
 	public static String killCommas(String string) {
-
-
-		if (string == null) throw new IllegalArgumentException ("No string");
-		// recursive step
-		
+		if (string == null) return "";
+			//throw new IllegalArgumentException ("No string");
+		if (string.length() == 1) {
+			if (string.charAt(0) == ',') {
+				return ""; //this return needs to be fixed
+			}
+			else {
+				return string; //this return needs to be fixed
+			}
+		}
 		if (string.charAt(0) == ',') {
 			return killCommas(string.substring(1));
 		}
 		else {
 			return string.charAt(0) + killCommas(string.substring(1));
 		}
-
 	}
-
-	//problem 2
 
 	public static int sumDigits(int num) {
-		//		int sum = 0;
-
-		//base case
-		if (num < 0) throw new IllegalArgumentException ("num is negative");
-		if (num == 0) return num;
-
-		int digit = num % 10; //give us the second digit on the left
-
-
-
-
-		return 3;
-
+		int hold;
+			//throw new IllegalArgumentException ("num is negative");
+		if (num == 0) {
+			return digit;
+		}
+		if (num < 0) return -1;
+		else {
+			hold = num;
+			digit = digit + num % 10;
+			return sumDigits(hold / 10);
+		}
+	}
+	
+	public void powerSet(int[] arr) {
+		
+		if (arr.length == 0) {
+			System.out.println("Empty array");
+		}
+		if (arr.length == 1) {
+			System.out.println("{" + arr + "}");
+		}
+		if (arr.length > 1) {
+			
+		}
+		
 	}
 
-
-
-
-
 	public static void main(String[] args) {
-		killCommas("a,");
+//		System.out.println(killCommas("a,c"));
+//		System.out.println(killCommas(",abc,d"));
+//		System.out.println(killCommas(",___,"));
+//		System.out.println(killCommas("lma,o,"));
+//		System.out.println(killCommas(",,"));
+//		System.out.println(killCommas("a,c,d,,,"));
+		
+//		System.out.println(sumDigits(892)); // Need to ask about if i need to clear the variables
+		int[] arr = new int[] {1};
+
+		
+		System.out.println(Arrays.toString(arr));
+		
+	
 
 	}
 }
