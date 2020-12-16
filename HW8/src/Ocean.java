@@ -2,7 +2,7 @@ import java.util.Random;
 
 public class Ocean {
 	
-	static Ship[][] ships = new Ship[10][10];
+	public static Ship[][] ships = new Ship[10][10];
 	int shotsFired; 
 	int hitCount; //hit shit, increase it but hitting the same spot don't increase it
 	int shipsSunk; //increment to 10 total ships sunk
@@ -15,6 +15,10 @@ public class Ocean {
 	int upperbound = 10; //0-9
 	int randomRowOrColumn = 2;
 	
+	
+	void setShips(int row, int column, Ship ship) {
+		ships[row][column] = ship;
+	}
 
 	void Ocean() {
 		shotsFired = 0;
@@ -98,7 +102,7 @@ public class Ocean {
 	}
 	
 	boolean isOccupied(int row, int column) {
-		if (ships [row][column].getShipType().equals("empty")) { //would this have an issue with all different types of ships
+		if (ships[row][column].getShipType().equals("empty")) { //would this have an issue with all different types of ships
 			//System.out.println("location is emptySea");
 			return false;
 		}
