@@ -11,16 +11,16 @@ public class Ocean {
 	//Random 
 	Random randomRow = new Random();
 	Random randomColumn = new Random();
-	Random RorC = new Random();
+	Random horOrVert = new Random();
 	int upperbound = 10; //0-9
-	int randomRowOrColumn = 2;
+	//int randomOrientation = 2;
 	
 	
 	void setShips(int row, int column, Ship ship) {
 		ships[row][column] = ship;
 	}
 
-	void Ocean() {
+	Ocean() {
 		shotsFired = 0;
 		hitCount = 0;
 		shipsSunk = 0;
@@ -42,14 +42,15 @@ public class Ocean {
 	//checking the location to put a new ship randomly 
 	//boundary checks 
 	
-	public void placeAllShipsRandomly(Ship ship, Ocean ocean) { //feed in a ship so that the code is cleaner
+	public void placeAllShipsRandomly() { //feed in a ship so that the code is cleaner
 		
 		
-		int randomR = randomRow.nextInt(upperbound);
-		int randomC = randomColumn.nextInt(upperbound);
-		int rowOrColumn = RorC.nextInt(randomRowOrColumn); //this will determine whether to place vertically or horizontally
+//		int randomR = randomRow.nextInt(upperbound);
+//		int randomC = randomColumn.nextInt(upperbound);
+//		int horVert = horOrVert.nextInt(randomOrientation); //this will determine whether to place vertically or horizontally
 		
-		int rows;
+		//int rows;
+		
 		
 		// 0  = horizontal
 		// 1 = vertical
@@ -57,34 +58,80 @@ public class Ocean {
 		//boundary check and check location
 		
 		
+		Ship battleship = new Battleship();
+		Ship cruiser1 = new Cruiser();
+		Ship cruiser2 = new Cruiser();
+		Ship destroy1 = new Destroyer();
+		Ship destroy2 = new Destroyer();
+		Ship destroy3 = new Destroyer();
+		Ship sub1 = new Submarine();
+		Ship sub2 = new Submarine();
+		Ship sub3 = new Submarine();
+		Ship sub4 = new Submarine();
+		Ship[] fleet = new Ship[10];
 		
-		if (ships[randomR][randomC] == null) {
-			if (rowOrColumn == 0) { //if to be placed horizontally
-			
-				//for loop checking row
-				
-				
-				
-//				check by index
-//				
-//				//while loop for placing the ships 
-//				
-//				00000000
-//				o      0 
-//				o      0      
-//				o      0 
-//				o      0 
-//				o      0 
-//				00000000
-//			}
-//			
-//			if(rowOrColumn == 1) { //if to be placed vertically
-//				//forloop checking column
-				
-				
-				System.out.println("to be put vertically and length is" + ship.getLength());
-			}
+		for (int i = 0; i < 1; i++) {
+			fleet[i] = battleship;
+			fleet[i+1] = cruiser1;
+			fleet[i+2] = cruiser2;
+			fleet[i+3] = destroy1;
+			fleet[i+4] = destroy2;
+			fleet[i+5] = destroy3;
+			fleet[i+6] = sub1;
+			fleet[i+7] = sub2;
+			fleet[i+8] = sub3;
+			fleet[i+9] = sub4;
 		}
+		
+		for (int i = 0; i < fleet.length; i++) {
+			int randomR = randomRow.nextInt(upperbound);
+			int randomC = randomColumn.nextInt(upperbound);
+			boolean horVert = horOrVert.nextBoolean();
+			
+			while(!fleet[i].okToPlaceShipAt(randomR, randomC, horVert, this)) {
+				randomR = randomRow.nextInt(upperbound);
+				randomC = randomColumn.nextInt(upperbound);
+				horVert = horOrVert.nextBoolean();
+			}
+			fleet[i].placeShipAt(randomR, randomC, horVert, this);
+		}
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+//		if (ships[randomR][randomC] == null) {
+//			if (rowOrColumn == 0) { //if to be placed horizontally
+//			
+//				//for loop checking row
+//				
+//				
+//				
+////				check by index
+////				
+////				//while loop for placing the ships 
+////				
+////				00000000
+////				o      0 
+////				o      0      
+////				o      0 
+////				o      0 
+////				o      0 
+////				00000000
+////			}
+////			
+////			if(rowOrColumn == 1) { //if to be placed vertically
+////				//forloop checking column
+//				
+//				
+//				System.out.println("to be put vertically and length is" + ship.getLength());
+//			}
+//		}
 	
 		
 		//perhaps use
@@ -164,10 +211,14 @@ public class Ocean {
 	
 	public static void main(String[] args) {
 		Ocean a = new Ocean();
-		Battleship b = new Battleship();
-		Cruiser c = new Cruiser();
-		a.placeAllShipsRandomly(b);
-		a.placeAllShipsRandomly(c);
+		a.placeAllShipsRandomly();
+		for (int i = 0; i < 10; i++) {
+			for (int k = 0; k < 10; k++) {
+				System.out.println("[" + i + "," + k + "]"+ ships[i][k].getShipType());
+			}
+		}
+//		a.placeAllShipsRandomly(b);
+//		a.placeAllShipsRandomly(c);
 	}
 
 }

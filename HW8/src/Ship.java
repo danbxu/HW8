@@ -38,25 +38,27 @@ public abstract class Ship {
 	}
 
 
-	boolean okToPlaceShipAt(int row, int column, boolean horizontal, Ocean ocean, Ship ship) {
+	boolean okToPlaceShipAt(int row, int column, boolean horizontal, Ocean ocean) {
+		int shipLeng = this.getLength();
+		
 
 		boolean areaFine = true;
 
 		if (horizontal) {
-			if (!(ship.getLength() + column <= 9)) {
+			if (!(shipLeng + column <= 9)) {
 				areaFine = false;
 			}
-			for (int i = 0; i < ship.getLength(); i++) {
+			for (int i = 0; i < shipLeng; i++) {
 				if (ocean.isOccupied(row, i)) {
 					areaFine = false;
 				}
 			}
 		}
 		if (!horizontal) {
-			if (!(ship.getLength() + row <= 9)) {
+			if (!(shipLeng + row <= 9)) {
 				areaFine = false;
 			}
-			for (int i = 0; i < ship.getLength(); i++) {
+			for (int i = 0; i < shipLeng; i++) {
 				if (ocean.isOccupied(i, column)) {
 					areaFine = false;
 				}
@@ -65,20 +67,20 @@ public abstract class Ship {
 
 
 		if (areaFine) {
-			for (int i = 0; i < ship.getLength(); i++) {
+			for (int i = 0; i < shipLeng; i++) {
 				if (horizontal && row == 0) {
 					if(column == 0) { //If spot is top left corner of ocean
-						if (ocean.isOccupied(1, i + column) && ocean.isOccupied(1, ship.getLength() + 1)) {
+						if (ocean.isOccupied(1, i + column) && ocean.isOccupied(1, shipLeng + 1)) {
 							areaFine = false;
 						}
 					}
-					if (column + ship.getLength() == 9) {
+					if (column + shipLeng == 9) {
 						if (ocean.isOccupied(1, i + column - 1) && ocean.isOccupied(1, 9)) {
 							areaFine = false;
 						}
 					}
-					else {
-						if (ocean.isOccupied(1, column - 1) && ocean.isOccupied(1, column + ship.getLength() + 1) && ocean.isOccupied(1, column + i)) {
+					if(column!= 0 && column + shipLeng != 9) {
+						if (ocean.isOccupied(1, column - 1) && ocean.isOccupied(1, column + shipLeng + 1) && ocean.isOccupied(1, column + i)) {
 							areaFine = false;
 						}
 					}
@@ -86,17 +88,17 @@ public abstract class Ship {
 				//if not edges
 				if (horizontal && row == 9) {
 					if(column == 0) { //If spot is top left corner of ocean
-						if (ocean.isOccupied(8, i + column) && ocean.isOccupied(8, ship.getLength() + 1)) {
+						if (ocean.isOccupied(8, i + column) && ocean.isOccupied(8, shipLeng + 1)) {
 							areaFine = false;
 						}
 					}
-					if (column + ship.getLength() == 9) {
+					if (column + shipLeng == 9) {
 						if (ocean.isOccupied(8, i + column - 1) && ocean.isOccupied(8, 9)) {
 							areaFine = false;
 						}
 					}
-					else {
-						if (ocean.isOccupied(8, column - 1) && ocean.isOccupied(8, column + ship.getLength() + 1) && ocean.isOccupied(8, column + i)) {
+					if (column != 0 && column + shipLeng != 9) {
+						if (ocean.isOccupied(8, column - 1) && ocean.isOccupied(8, column + shipLeng + 1) && ocean.isOccupied(8, column + i)) {
 							areaFine = false;
 						}
 					}
@@ -104,14 +106,14 @@ public abstract class Ship {
 				//if not edges 
 				if (horizontal && row != 9 && row != 0) {
 					if(column == 0) { //If spot is top left corner of ocean
-						if (ocean.isOccupied(row - 1, i + column) && ocean.isOccupied(row - 1, ship.getLength() + 1)) {
+						if (ocean.isOccupied(row - 1, i + column) && ocean.isOccupied(row - 1, shipLeng + 1)) {
 							areaFine = false;
 						}
-						if (ocean.isOccupied(row + 1, i + column) && ocean.isOccupied(row + 1, ship.getLength() + 1)) {
+						if (ocean.isOccupied(row + 1, i + column) && ocean.isOccupied(row + 1, shipLeng + 1)) {
 							areaFine = false;
 						}
 					}
-					if (column + ship.getLength() == 9) {
+					if (column + shipLeng == 9) {
 						if (ocean.isOccupied(row - 1, i + column - 1) && ocean.isOccupied(row - 1, 9)) {
 							areaFine = false;
 						}
@@ -119,11 +121,11 @@ public abstract class Ship {
 							areaFine = false;
 						}
 					}
-					else {
-						if (ocean.isOccupied(row - 1, column - 1) && ocean.isOccupied(row - 1, column + ship.getLength() + 1) && ocean.isOccupied(row - 1, column + i)) {
+					if(column != 0 && column + shipLeng != 9) {
+						if (ocean.isOccupied(row - 1, column - 1) && ocean.isOccupied(row - 1, column + shipLeng + 1) && ocean.isOccupied(row - 1, column + i)) {
 							areaFine = false;
 						}
-						if (ocean.isOccupied(row + 1, column - 1) && ocean.isOccupied(row + 1, column + ship.getLength() + 1) && ocean.isOccupied(row + 1, column + i)) {
+						if (ocean.isOccupied(row + 1, column - 1) && ocean.isOccupied(row + 1, column + shipLeng + 1) && ocean.isOccupied(row + 1, column + i)) {
 							areaFine = false;
 						}
 					}
@@ -136,17 +138,17 @@ public abstract class Ship {
 
 				if (!horizontal && column == 0) {
 					if(row == 0) { //If spot is top left corner of ocean
-						if (ocean.isOccupied(i + row, 1) && ocean.isOccupied(ship.getLength() + 1, 1)) {
+						if (ocean.isOccupied(i + row, 1) && ocean.isOccupied(shipLeng + 1, 1)) {
 							areaFine = false;
 						}
 					}
-					if (row + ship.getLength() == 9) {
+					if (row + shipLeng == 9) {
 						if (ocean.isOccupied(i + row - 1, 1) && ocean.isOccupied(9,1)) {
 							areaFine = false;
 						}
 					}
-					else {
-						if (ocean.isOccupied(row - 1, 1) && ocean.isOccupied(row + ship.getLength() + 1, 1) && ocean.isOccupied(row + i, 1)) {
+					if (row != 0 && row + shipLeng != 9) {
+						if (ocean.isOccupied(row - 1, 1) && ocean.isOccupied(row + shipLeng + 1, 1) && ocean.isOccupied(row + i, 1)) {
 							areaFine = false;
 						}
 					}
@@ -154,17 +156,17 @@ public abstract class Ship {
 				//if not edges
 				if (!horizontal && column == 9) {
 					if(row == 0) { //If spot is top left corner of ocean
-						if (ocean.isOccupied(i + row, 8) && ocean.isOccupied(ship.getLength() + 1, 8)) {
+						if (ocean.isOccupied(i + row, 8) && ocean.isOccupied(shipLeng + 1, 8)) {
 							areaFine = false;
 						}
 					}
-					if (row + ship.getLength() == 9) {
+					if (row + shipLeng == 9) {
 						if (ocean.isOccupied(i + row - 1, 8) && ocean.isOccupied(9, 8)) {
 							areaFine = false;
 						}
 					}
-					else {
-						if (ocean.isOccupied(row - 1, 8) && ocean.isOccupied(row + ship.getLength() + 1, 8) && ocean.isOccupied(row + i, 8)) {
+					if (row != 0 && row + shipLeng != 9) {
+						if (ocean.isOccupied(row - 1, 8) && ocean.isOccupied(row + shipLeng + 1, 8) && ocean.isOccupied(row + i, 8)) {
 							areaFine = false;
 						}
 					}
@@ -172,14 +174,14 @@ public abstract class Ship {
 				//if not edges 
 				if (!horizontal && column != 9 && column != 0) {
 					if(row == 0) { //If spot is top left corner of ocean
-						if (ocean.isOccupied(i + row, column - 1) && ocean.isOccupied(ship.getLength() + 1, column - 1)) {
+						if (ocean.isOccupied(i + row, column - 1) && ocean.isOccupied(shipLeng + 1, column - 1)) {
 							areaFine = false;
 						}
-						if (ocean.isOccupied(i + row, column + 1) && ocean.isOccupied(ship.getLength() + 1, column + 1)) {
+						if (ocean.isOccupied(i + row, column + 1) && ocean.isOccupied(shipLeng + 1, column + 1)) {
 							areaFine = false;
 						}
 					}
-					if (row + ship.getLength() == 9) {
+					if (row + shipLeng == 9) {
 						if (ocean.isOccupied(i + row - 1, column - 1) && ocean.isOccupied(9, column - 1)) {
 							areaFine = false;
 						}
@@ -187,11 +189,11 @@ public abstract class Ship {
 							areaFine = false;
 						}
 					}
-					else {
-						if (ocean.isOccupied(row - 1, column - 1) && ocean.isOccupied(row + ship.getLength() + 1, column - 1) && ocean.isOccupied(row + i, column - 1)) {
+					if(row!=0 && row + shipLeng != 9) {
+						if (ocean.isOccupied(row - 1, column - 1) && ocean.isOccupied(row + shipLeng + 1, column - 1) && ocean.isOccupied(row + i, column - 1)) {
 							areaFine = false;
 						}
-						if (ocean.isOccupied(row - 1, column + 1) && ocean.isOccupied(row + ship.getLength() + 1, column + 1) && ocean.isOccupied(row + i, column + 1)) {
+						if (ocean.isOccupied(row - 1, column + 1) && ocean.isOccupied(row + shipLeng + 1, column + 1) && ocean.isOccupied(row + i, column + 1)) {
 							areaFine = false;
 						}
 					}
@@ -205,19 +207,19 @@ public abstract class Ship {
 
 
 
-	void placeShipAt(int row, int column, boolean horizontal, Ocean ocean, Ship ship) {
+	void placeShipAt(int row, int column, boolean horizontal, Ocean ocean) {
 		//added ocean because it is easier to create one ocean
 		
-		if (ship.okToPlaceShipAt(row, column, horizontal, ocean, ship)) {
-			ship.setBowColumn(column);
-			ship.setBowRow(row);
-			ship.setHorizontal(horizontal);
-			for (int i = 0; i < ship.getLength(); i++) {
+		if (this.okToPlaceShipAt(row, column, horizontal, ocean)) {
+			this.setBowColumn(column);
+			this.setBowRow(row);
+			this.setHorizontal(horizontal);
+			for (int i = 0; i < this.getLength(); i++) {
 				if (horizontal) {
-					ocean.setShips(row, column + i, ship);
+					ocean.setShips(row, column + i, this);
 				}
 				else {
-					ocean.setShips(row + i, column, ship);
+					ocean.setShips(row + i, column, this);
 				}
 			}
 		}
