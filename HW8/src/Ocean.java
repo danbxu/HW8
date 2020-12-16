@@ -113,9 +113,14 @@ public class Ocean {
 	}
 	
 	boolean shootAt(int row, int column) {
+		shotsFired++;
+		if (!ships[row][column].getShipType().equals("empty") && !ships[row][column].isSunk()) {
+			hitCount++;
+			return true;
+		}
 		//TODO implement shooting 
 		//This updates shotsfired and hitscount, if the ship becomes sunk, the additional shots return false
-		return true;
+		return false;
 	}
 	
 	

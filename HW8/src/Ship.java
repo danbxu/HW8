@@ -206,10 +206,12 @@ public abstract class Ship {
 
 
 	void placeShipAt(int row, int column, boolean horizontal, Ocean ocean, Ship ship) {
-		//addded ocean because it is easier to create one ocean
-//		boolean inLoop = false;
+		//added ocean because it is easier to create one ocean
 		
 		if (ship.okToPlaceShipAt(row, column, horizontal, ocean, ship)) {
+			ship.setBowColumn(column);
+			ship.setBowRow(row);
+			ship.setHorizontal(horizontal);
 			for (int i = 0; i < ship.getLength(); i++) {
 				if (horizontal) {
 					ocean.setShips(row, column + i, ship);
@@ -223,10 +225,20 @@ public abstract class Ship {
 	}
 
 	boolean shootAt(int row, int column, Ocean ocean) {
+		if (!ocean.getShipArray()[row][column].getShipType().equals("empty") && !ocean.getShipArray()[row][column].isSunk()) {
+			Ship currentShip = ocean.getShipArray()[row][column];
+			if(currentShip.isHorizontal()) {
+				currentShip.hit[column - currentShip.getBowColumn()] = true;
+			}
+			else {
+				currentShip.hit[row - currentShip.getBowRow()] = true;
+			}
+			return true;
+		}
 
 		//feed in an ocean so it it's always referring to the same ocean 
 
-		return true;
+		return false;
 	}
 
 	boolean isSunk() {
