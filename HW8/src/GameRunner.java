@@ -143,7 +143,7 @@ public class GameRunner {
 	public static void main(String[] args) {
 		GameRunner r = new GameRunner();
 		r.RunGame();
-//		System.out.println("finished 1");
+		System.out.println("finished 1");
 //		GameRunner s = new GameRunner();
 //		s.RunGame();
 		//r.RunGame();
