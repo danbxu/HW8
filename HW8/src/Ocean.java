@@ -9,7 +9,7 @@ public class Ocean {
 	int shipsSunk; //increment to 10 total ships sunk
 	static ArrayList<int[]> userInputs = new ArrayList<int[]>();
 	int[] input = new int[2];
-	
+
 	Random randomRow = new Random();
 	Random randomColumn = new Random();
 	Random horOrVert = new Random();
@@ -17,16 +17,16 @@ public class Ocean {
 
 
 	//This returns the input location set by the user. 
-	public int[] getInput() {
-		return input;
-	}
-	
+//	public int[] getInput() {
+//		return input;
+//	}
+
 	//This sets the userInput location (where to shoot) and adds the location into ArrayList <int[]> userInputs 
-	public void setInput(int[] input) {
-		this.input = input;
-		userInputs.add(input);
-	}
-	
+//		public void setInput(int[] input) {
+//			this.input = input;
+//			userInputs.add(input);
+//		}
+
 	/*
 	 * This method sets a given ship at given locations [row][column].
 	 * 
@@ -55,8 +55,9 @@ public class Ocean {
 		shipsSunk = 0;
 		input = null;
 		//userInputs.clear();
-		int arr[] = {10, 10}; 
-		userInputs.add(arr);
+		int arr[] = {10, 10};
+		input = arr;
+		userInputs.add(input);
 
 		//adds emptySea into null
 		for (int i = 0; i < 10; i++) {
@@ -68,15 +69,15 @@ public class Ocean {
 			}
 		}
 	}
-	
+
 	/**
 	 * This method sets the userInputs, which will include all user choices of coordinates he/she wants
 	 * to shootAt.
 	 * 
 	 * @param userInputs
 	 */
-	public void setUserInputs(ArrayList<int[]> userInputs) {
-		this.userInputs = userInputs;
+	public void setUserInputs(int[] input) {
+		Ocean.userInputs.add(input);
 	}
 
 	/*
@@ -156,7 +157,7 @@ public class Ocean {
 			return true;
 		}
 	}
-	
+
 	/*
 	 * This method returns a boolean depending if the there is a ship at location (row, column).
 	 * For it to return true, there must be a ship at the chosen location in order for the ship
@@ -242,7 +243,7 @@ public class Ocean {
 			boolean hasBeenCalled = false;
 			if (i == 0) {
 				for (int j = 0; j < 10; j++) {
-					if (j ==0) {
+					if (j == 0) {
 						System.out.print("   " + j);
 					}
 					else {
@@ -253,31 +254,29 @@ public class Ocean {
 			}
 
 			for (int j = 0; j < 10; j++) {
-				hasBeenCalled = false;
+				//hasBeenCalled = false;
 				String symbol = ".";
 				Ship currentShip = ships[i][j];
 				boolean isHor = currentShip.isHorizontal();
 				int column = currentShip.getBowColumn();
 				int row = currentShip.getBowRow();
 
-				if (userInputs != null) {
-					for (int k = 1; k < userInputs.size(); k++) {
-						if (userInputs.get(k)[0] == i && userInputs.get(k)[1] == j) {
-							hasBeenCalled = true;
-							//symbol = currentShip.toString();
-							
-						}
+				for (int k = 1; k < userInputs.size(); k++) {
+					if (userInputs.get(k)[0] == i && userInputs.get(k)[1] == j) {
+						hasBeenCalled = true;
+						symbol = currentShip.toString();
+						k = userInputs.size() + 1;
+
 					}
 				}
+
 
 				if (j == 0) {
 					System.out.print(i + " ");
 				}
-				if (hasBeenCalled) {
-					symbol = currentShip.toString();
-				}
+				
 				System.out.print("[" + symbol + "]");
-//				hasBeenCalled = false;
+				//				hasBeenCalled = false;
 			}
 			System.out.println();
 		}
@@ -293,13 +292,30 @@ public class Ocean {
 		int [] arr = new int[2];
 		arr[0] = 7;
 		arr[1] = 3;
-		a.setInput(arr);
-		System.out.println(Arrays.toString(userInputs.get(1)));
+//		input = arr;
+//		userInputs.add(input);
+		a.setUserInputs(arr);
+		System.out.println(Arrays.toString(userInputs.get(0)) + Arrays.toString(userInputs.get(1)));
 		a.print();
-		arr[0] = 2;
-		arr[1] = 4;
-		a.setInput(arr);
-		System.out.println(Arrays.toString(userInputs.get(2)));
+		
+		int [] arr1 = new int[2];
+		arr1[0] = 2;
+		arr1[1] = 4;
+//		input = arr;
+//		userInputs.add(input);
+		a.setUserInputs(arr1);
+//				userInputs.add(input);
+		System.out.println(Arrays.toString(userInputs.get(0)) + Arrays.toString(userInputs.get(1)) + Arrays.toString(userInputs.get(2)));
+		a.print();
+		
+		int [] arr2 = new int[2];
+		arr2[0] = 0;
+		arr2[1] = 0;
+//		input = arr;
+//		userInputs.add(input);
+		a.setUserInputs(arr2);
+//				userInputs.add(input);
+		System.out.println(Arrays.toString(userInputs.get(0)) + Arrays.toString(userInputs.get(1)) + Arrays.toString(userInputs.get(2)));
 		a.print();
 	}
 
