@@ -246,7 +246,7 @@ public class Ocean {
 	 * 
 	 */
 	void print() {
-		System.out.println("        The gameboard:");
+		System.out.println("        The Gameboard:");
 		System.out.println();
 
 		for (int i = 0; i < 10; i++ ) {
