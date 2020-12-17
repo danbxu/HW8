@@ -13,7 +13,7 @@ public class RC {
 				return ""; 
 			}
 			else {
-				return string; 
+				return string;  
 			}
 		}
 		//If charAt(0) is a comma, remove the comma and return 1 index after
@@ -70,12 +70,12 @@ public class RC {
 //		System.out.println(killCommas("a,c,d,,,"));
 //		System.out.println(killCommas(""));
 		
-		System.out.println(sumDigits(111)); // Need to ask about if i need to clear the variables
-		System.out.println(sumDigits(123));
-//		int[] arr = new int[] {1};
-//
-//		
-//		System.out.println(Arrays.toString(arr));
+//		System.out.println(sumDigits(111)); // Need to ask about if i need to clear the variables
+//		System.out.println(sumDigits(123));
+		
+		
+		int[] arr = new int[] {1};
+		System.out.println(Arrays.toString(arr));
 		
 	
 
