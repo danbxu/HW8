@@ -948,7 +948,11 @@ class JunitTesting {
 	@Test
 	void checkGetShipsType() {
 		Battleship test = new Battleship();
-		//TODO
+		Ocean ocean = new Ocean();
+
+		//There is already a submarine in the ship[][] 2D from testing above 
+		assertNotNull(ocean.getshipsType(2, 3));
+		
 	}
 	
 
@@ -1017,19 +1021,17 @@ class JunitTesting {
 	 * location [row][column] contains a ship
 	 */
 	
-//	@Test
-//	void CheckShootAt() {
+	@Test
+	void CheckShootAt() {
+		//TODO
 //		Destroyer Destroyer = new Destroyer();
 //		Ocean ocean = new Ocean();
 //		
 //        Destroyer.placeShipAt(2, 2, true, ocean);
 //        
 //        ocean.shootAt(2, 2);
-//        
-//        assertTrue(Destroyer.hit[0]);
-//        
-//		
-//		
-//	}
+        
+
+	}
 
 }
