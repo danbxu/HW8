@@ -390,7 +390,7 @@ public abstract class Ship {
 	}
 	
 	
-	//This method returns whether the ship is sunk and is overridden
+	//This method returns whether the ship is sunk and is overridden //this can't be test because ship can't be instantiated
 	boolean isSunk() {
 		return true;
 	}

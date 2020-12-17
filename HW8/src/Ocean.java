@@ -37,6 +37,10 @@ public class Ocean {
 	void setShips(int row, int column, Ship ship) {
 		ships[row][column] = ship;
 	}
+	
+	String getshipsType(int row, int column) {
+		return ships[row][column].getShipType();
+	}
 
 	/**
 	 * This method initializes the following game variables:
@@ -289,40 +293,6 @@ public class Ocean {
 		System.out.println("________________________________");
 
 
-	}
-
-
-	public static void main(String[] args) {
-		Ocean a = new Ocean();
-		a.placeAllShipsRandomly();
-		int [] arr = new int[2];
-		arr[0] = 7;
-		arr[1] = 3;
-//		input = arr;
-//		userInputs.add(input);
-		a.setUserInputs(arr);
-		System.out.println(Arrays.toString(userInputs.get(0)) + Arrays.toString(userInputs.get(1)));
-		a.print();
-		
-		int [] arr1 = new int[2];
-		arr1[0] = 2;
-		arr1[1] = 4;
-//		input = arr;
-//		userInputs.add(input);
-		a.setUserInputs(arr1);
-//				userInputs.add(input);
-		System.out.println(Arrays.toString(userInputs.get(0)) + Arrays.toString(userInputs.get(1)) + Arrays.toString(userInputs.get(2)));
-		a.print();
-		
-		int [] arr2 = new int[2];
-		arr2[0] = 0;
-		arr2[1] = 0;
-//		input = arr;
-//		userInputs.add(input);
-		a.setUserInputs(arr2);
-//				userInputs.add(input);
-		System.out.println(Arrays.toString(userInputs.get(0)) + Arrays.toString(userInputs.get(1)) + Arrays.toString(userInputs.get(2)));
-		a.print();
 	}
 
 }

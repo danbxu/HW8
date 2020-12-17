@@ -226,17 +226,15 @@ class JunitTesting {
 	@Test
 	void CheckPlaceShips() {
 		Battleship test = new Battleship();
-		Battleship test2 = new Battleship();
+		Cruiser test2 = new Cruiser();
 		Ocean ocean = new Ocean();
 
 		test.placeShipAt(5, 0, true, ocean);
-		test.placeShipAt(0, 5, false, ocean);
+		test2.placeShipAt(0, 5, false, ocean);
+		
 
-
-		//TODO NOT SURE HOW TO TEST THIS//TODO NOT SURE HOW TO TEST THIS
-		//TODO NOT SURE HOW TO TEST THIS
-		//TODO NOT SURE HOW TO TEST THIS
-		//TODO NOT SURE HOW TO TEST THIS
+		assertTrue(ocean.getshipsType(5, 0).contains("Battleship"));
+		assertTrue(ocean.getshipsType(0, 5).contains("Cruiser"));
 
 	}
 	//This will test the if-conditionals in CheckOkToPlaceShipAt returns true without any ships already placed
@@ -291,11 +289,7 @@ class JunitTesting {
 		assertFalse(Battleship.okToPlaceShipAt(9, 2, false, ocean));
 
 		//Test ships not next to the edges
-		
-		
-		//Row 1
-		
-		
+		//Row 1 and not along the outer edges of the grid
 		assertTrue(Battleship.okToPlaceShipAt(1, 1, true, ocean));
 		assertTrue(Battleship.okToPlaceShipAt(1, 1, false, ocean));
 		assertTrue(Battleship.okToPlaceShipAt(1, 2, true, ocean));
@@ -313,7 +307,7 @@ class JunitTesting {
 		assertFalse(Battleship.okToPlaceShipAt(1, 8, true, ocean));
 		assertTrue(Battleship.okToPlaceShipAt(1, 8, false, ocean));
 
-		//Row 2
+		//Row 2 and not along the outer edges of the grid
 		assertTrue(Battleship.okToPlaceShipAt(2, 1, true, ocean));
 		assertTrue(Battleship.okToPlaceShipAt(2, 1, false, ocean));
 		assertTrue(Battleship.okToPlaceShipAt(2, 2, true, ocean));
@@ -331,7 +325,7 @@ class JunitTesting {
 		assertFalse(Battleship.okToPlaceShipAt(2, 8, true, ocean));
 		assertTrue(Battleship.okToPlaceShipAt(2, 8, false, ocean));
 
-		//Row 3
+		//Row 3 and not along the outer edges of the grid
 		assertTrue(Battleship.okToPlaceShipAt(3, 1, true, ocean));
 		assertTrue(Battleship.okToPlaceShipAt(3, 1, false, ocean));
 		assertTrue(Battleship.okToPlaceShipAt(3, 2, true, ocean));
@@ -349,7 +343,7 @@ class JunitTesting {
 		assertFalse(Battleship.okToPlaceShipAt(3, 8, true, ocean));
 		assertTrue(Battleship.okToPlaceShipAt(3, 8, false, ocean));
 
-		//Row 4
+		//Row 4 and not along the outer edges of the grid
 		assertTrue(Battleship.okToPlaceShipAt(4, 1, true, ocean));
 		assertTrue(Battleship.okToPlaceShipAt(4, 1, false, ocean));
 		assertTrue(Battleship.okToPlaceShipAt(4, 2, true, ocean));
@@ -367,7 +361,7 @@ class JunitTesting {
 		assertFalse(Battleship.okToPlaceShipAt(4, 8, true, ocean));
 		assertTrue(Battleship.okToPlaceShipAt(4, 8, false, ocean));
 
-		//Row5
+		//Row5 and not along the outer edges of the grid
 		assertTrue(Battleship.okToPlaceShipAt(5, 1, true, ocean));
 		assertTrue(Battleship.okToPlaceShipAt(5, 1, false, ocean));
 		assertTrue(Battleship.okToPlaceShipAt(5, 2, true, ocean));
@@ -385,7 +379,7 @@ class JunitTesting {
 		assertFalse(Battleship.okToPlaceShipAt(5, 8, true, ocean));
 		assertTrue(Battleship.okToPlaceShipAt(5, 8, false, ocean));
 		
-		//Row6
+		//Row6 and not along the outer edges of the grid
 		assertTrue(Battleship.okToPlaceShipAt(6, 1, true, ocean));
 		assertTrue(Battleship.okToPlaceShipAt(6, 1, false, ocean));
 		assertTrue(Battleship.okToPlaceShipAt(6, 2, true, ocean));
@@ -403,7 +397,7 @@ class JunitTesting {
 		assertFalse(Battleship.okToPlaceShipAt(6, 8, true, ocean));
 		assertTrue(Battleship.okToPlaceShipAt(6, 8, false, ocean));
 		
-		//Row7
+		//Row7 and not along the outer edges of the grid
 		assertTrue(Battleship.okToPlaceShipAt(7, 1, true, ocean));
 		assertFalse(Battleship.okToPlaceShipAt(7, 1, false, ocean));
 		assertTrue(Battleship.okToPlaceShipAt(7, 2, true, ocean));
@@ -421,7 +415,7 @@ class JunitTesting {
 		assertFalse(Battleship.okToPlaceShipAt(7, 8, true, ocean));
 		assertFalse(Battleship.okToPlaceShipAt(7, 8, false, ocean));
 		
-		//Row8
+		//Row8 and not along the outer edges of the grid
 		assertTrue(Battleship.okToPlaceShipAt(8, 1, true, ocean));
 		assertFalse(Battleship.okToPlaceShipAt(8, 1, false, ocean));
 		assertTrue(Battleship.okToPlaceShipAt(8, 2, true, ocean));
@@ -440,7 +434,13 @@ class JunitTesting {
 		assertFalse(Battleship.okToPlaceShipAt(8, 8, false, ocean));
 	}
 	
-	//Tests whether the if-conditions returns false when there is already a ship in every spot in Ships 2D array
+	/*
+	 * Tests whether the if-conditions returns false when there is already a ship in every spot in Ships 2D array
+	 * Note every RowX will have 10 vertical and 10 horizontal cases
+	 * Instead of doing the giant chunk commented out below, we used for loops
+	 * to count the number of falses. Since we put a submarine into every cell in 
+	 * the ships[][] 2D array, every new okToPlaceShip() will return false
+	 */
 	@Test
 	void CheckOkToPlaceShipAt2() {
 		int counterRow0Horizontal = 0;
@@ -468,6 +468,7 @@ class JunitTesting {
 		Submarine Submarine = new Submarine();
 		Ocean ocean = new Ocean();
 		
+		//Put submarine in every cell in the ships[][] 2D array
 		for (int i = 0; i < 9; i++) {
 			for (int j = 0; j < 9; j++) {
 				ocean.setShips(i, j, Submarine);
@@ -523,7 +524,6 @@ class JunitTesting {
 				counterRow1Horizontal++;
 			}
 		}
-		
 		for (int i = 0; i < 10; i++) {
 			if (!Submarine.okToPlaceShipAt(1, i, false, ocean)) {
 				counterRow1Vertical++;
@@ -758,73 +758,125 @@ class JunitTesting {
 //		assertFalse(Submarine.okToPlaceShipAt(6, 9, false, ocean));
 		
 		
-		//Row 7
-		assertFalse(Submarine.okToPlaceShipAt(7, 0, true, ocean));
-		assertFalse(Submarine.okToPlaceShipAt(7, 0, false, ocean));
-		assertFalse(Submarine.okToPlaceShipAt(7, 1, true, ocean));
-		assertFalse(Submarine.okToPlaceShipAt(7, 1, false, ocean));
-		assertFalse(Submarine.okToPlaceShipAt(7, 2, true, ocean));
-		assertFalse(Submarine.okToPlaceShipAt(7, 2, false, ocean));
-		assertFalse(Submarine.okToPlaceShipAt(7, 3, true, ocean));
-		assertFalse(Submarine.okToPlaceShipAt(7, 3, false, ocean));
-		assertFalse(Submarine.okToPlaceShipAt(7, 4, true, ocean));
-		assertFalse(Submarine.okToPlaceShipAt(7, 4, false, ocean));
-		assertFalse(Submarine.okToPlaceShipAt(7, 5, true, ocean));
-		assertFalse(Submarine.okToPlaceShipAt(7, 5, false, ocean));
-		assertFalse(Submarine.okToPlaceShipAt(7, 6, true, ocean));
-		assertFalse(Submarine.okToPlaceShipAt(7, 6, false, ocean));
-		assertFalse(Submarine.okToPlaceShipAt(7, 7, true, ocean));
-		assertFalse(Submarine.okToPlaceShipAt(7, 7, false, ocean));
-		assertFalse(Submarine.okToPlaceShipAt(7, 8, true, ocean));
-		assertFalse(Submarine.okToPlaceShipAt(7, 8, false, ocean));
-		assertFalse(Submarine.okToPlaceShipAt(7, 9, true, ocean));
-		assertFalse(Submarine.okToPlaceShipAt(7, 9, false, ocean));
+		/**=====================================
+		 * Checking Row7 horizontal and vertical 
+		 *=====================================
+		 */
+		for (int i = 0; i < 10; i++) {
+			if (!Submarine.okToPlaceShipAt(7, i, true, ocean)) {
+				counterRow7Horizontal++;
+			}
+		}
 		
-		//Row 8
-		assertFalse(Submarine.okToPlaceShipAt(8, 0, true, ocean));
-		assertFalse(Submarine.okToPlaceShipAt(8, 0, false, ocean));
-		assertFalse(Submarine.okToPlaceShipAt(8, 1, true, ocean));
-		assertFalse(Submarine.okToPlaceShipAt(8, 1, false, ocean));
-		assertFalse(Submarine.okToPlaceShipAt(8, 2, true, ocean));
-		assertFalse(Submarine.okToPlaceShipAt(8, 2, false, ocean));
-		assertFalse(Submarine.okToPlaceShipAt(8, 3, true, ocean));
-		assertFalse(Submarine.okToPlaceShipAt(8, 3, false, ocean));
-		assertFalse(Submarine.okToPlaceShipAt(8, 4, true, ocean));
-		assertFalse(Submarine.okToPlaceShipAt(8, 4, false, ocean));
-		assertFalse(Submarine.okToPlaceShipAt(8, 5, true, ocean));
-		assertFalse(Submarine.okToPlaceShipAt(8, 5, false, ocean));
-		assertFalse(Submarine.okToPlaceShipAt(8, 6, true, ocean));
-		assertFalse(Submarine.okToPlaceShipAt(8, 6, false, ocean));
-		assertFalse(Submarine.okToPlaceShipAt(8, 7, true, ocean));
-		assertFalse(Submarine.okToPlaceShipAt(8, 7, false, ocean));
-		assertFalse(Submarine.okToPlaceShipAt(8, 8, true, ocean));
-		assertFalse(Submarine.okToPlaceShipAt(8, 8, false, ocean));
-		assertFalse(Submarine.okToPlaceShipAt(8, 9, true, ocean));
-		assertFalse(Submarine.okToPlaceShipAt(8, 9, false, ocean));
+		for (int i = 0; i < 10; i++) {
+			if (!Submarine.okToPlaceShipAt(7, i, false, ocean)) {
+				counterRow7Vertical++;
+			}
+		}
+		assertEquals(counterRow7Vertical++, 10); 
+		assertEquals(counterRow7Horizontal++, 10); 
 		
-		//Row 9
-		assertFalse(Submarine.okToPlaceShipAt(9, 0, true, ocean));
-		assertFalse(Submarine.okToPlaceShipAt(9, 0, false, ocean));
-		assertFalse(Submarine.okToPlaceShipAt(9, 1, true, ocean));
-		assertFalse(Submarine.okToPlaceShipAt(9, 1, false, ocean));
-		assertFalse(Submarine.okToPlaceShipAt(9, 2, true, ocean));
-		assertFalse(Submarine.okToPlaceShipAt(9, 2, false, ocean));
-		assertFalse(Submarine.okToPlaceShipAt(9, 3, true, ocean));
-		assertFalse(Submarine.okToPlaceShipAt(9, 3, false, ocean));
-		assertFalse(Submarine.okToPlaceShipAt(9, 4, true, ocean));
-		assertFalse(Submarine.okToPlaceShipAt(9, 4, false, ocean));
-		assertFalse(Submarine.okToPlaceShipAt(9, 5, true, ocean));
-		assertFalse(Submarine.okToPlaceShipAt(9, 5, false, ocean));
-		assertFalse(Submarine.okToPlaceShipAt(9, 6, true, ocean));
-		assertFalse(Submarine.okToPlaceShipAt(9, 6, false, ocean));
-		assertFalse(Submarine.okToPlaceShipAt(9, 7, true, ocean));
-		assertFalse(Submarine.okToPlaceShipAt(9, 7, false, ocean));
-		assertFalse(Submarine.okToPlaceShipAt(9, 8, true, ocean));
-		assertFalse(Submarine.okToPlaceShipAt(9, 8, false, ocean));
-		assertFalse(Submarine.okToPlaceShipAt(9, 9, true, ocean));
-		assertFalse(Submarine.okToPlaceShipAt(9, 9, false, ocean));
-
+		// =====The Chunk below is verified===
+//		assertFalse(Submarine.okToPlaceShipAt(7, 0, true, ocean));
+//		assertFalse(Submarine.okToPlaceShipAt(7, 0, false, ocean));
+//		assertFalse(Submarine.okToPlaceShipAt(7, 1, true, ocean));
+//		assertFalse(Submarine.okToPlaceShipAt(7, 1, false, ocean));
+//		assertFalse(Submarine.okToPlaceShipAt(7, 2, true, ocean));
+//		assertFalse(Submarine.okToPlaceShipAt(7, 2, false, ocean));
+//		assertFalse(Submarine.okToPlaceShipAt(7, 3, true, ocean));
+//		assertFalse(Submarine.okToPlaceShipAt(7, 3, false, ocean));
+//		assertFalse(Submarine.okToPlaceShipAt(7, 4, true, ocean));
+//		assertFalse(Submarine.okToPlaceShipAt(7, 4, false, ocean));
+//		assertFalse(Submarine.okToPlaceShipAt(7, 5, true, ocean));
+//		assertFalse(Submarine.okToPlaceShipAt(7, 5, false, ocean));
+//		assertFalse(Submarine.okToPlaceShipAt(7, 6, true, ocean));
+//		assertFalse(Submarine.okToPlaceShipAt(7, 6, false, ocean));
+//		assertFalse(Submarine.okToPlaceShipAt(7, 7, true, ocean));
+//		assertFalse(Submarine.okToPlaceShipAt(7, 7, false, ocean));
+//		assertFalse(Submarine.okToPlaceShipAt(7, 8, true, ocean));
+//		assertFalse(Submarine.okToPlaceShipAt(7, 8, false, ocean));
+//		assertFalse(Submarine.okToPlaceShipAt(7, 9, true, ocean));
+//		assertFalse(Submarine.okToPlaceShipAt(7, 9, false, ocean));
 		
+		/**=====================================
+		 * Checking Row8 horizontal and vertical 
+		 *=====================================
+		 */
+		for (int i = 0; i < 10; i++) {
+			if (!Submarine.okToPlaceShipAt(8, i, true, ocean)) {
+				counterRow8Horizontal++;
+			}
+		}
+		
+		for (int i = 0; i < 10; i++) {
+			if (!Submarine.okToPlaceShipAt(8, i, false, ocean)) {
+				counterRow8Vertical++;
+			}
+		}
+		assertEquals(counterRow8Vertical++, 10); 
+		assertEquals(counterRow8Horizontal++, 10); 
+		
+		// =====The Chunk below is verified===
+//		assertFalse(Submarine.okToPlaceShipAt(8, 0, true, ocean));
+//		assertFalse(Submarine.okToPlaceShipAt(8, 0, false, ocean));
+//		assertFalse(Submarine.okToPlaceShipAt(8, 1, true, ocean));
+//		assertFalse(Submarine.okToPlaceShipAt(8, 1, false, ocean));
+//		assertFalse(Submarine.okToPlaceShipAt(8, 2, true, ocean));
+//		assertFalse(Submarine.okToPlaceShipAt(8, 2, false, ocean));
+//		assertFalse(Submarine.okToPlaceShipAt(8, 3, true, ocean));
+//		assertFalse(Submarine.okToPlaceShipAt(8, 3, false, ocean));
+//		assertFalse(Submarine.okToPlaceShipAt(8, 4, true, ocean));
+//		assertFalse(Submarine.okToPlaceShipAt(8, 4, false, ocean));
+//		assertFalse(Submarine.okToPlaceShipAt(8, 5, true, ocean));
+//		assertFalse(Submarine.okToPlaceShipAt(8, 5, false, ocean));
+//		assertFalse(Submarine.okToPlaceShipAt(8, 6, true, ocean));
+//		assertFalse(Submarine.okToPlaceShipAt(8, 6, false, ocean));
+//		assertFalse(Submarine.okToPlaceShipAt(8, 7, true, ocean));
+//		assertFalse(Submarine.okToPlaceShipAt(8, 7, false, ocean));
+//		assertFalse(Submarine.okToPlaceShipAt(8, 8, true, ocean));
+//		assertFalse(Submarine.okToPlaceShipAt(8, 8, false, ocean));
+//		assertFalse(Submarine.okToPlaceShipAt(8, 9, true, ocean));
+//		assertFalse(Submarine.okToPlaceShipAt(8, 9, false, ocean));
+		
+		
+		/**=====================================
+		 * Checking Row8 horizontal and vertical 
+		 *=====================================
+		 */
+		for (int i = 0; i < 10; i++) {
+			if (!Submarine.okToPlaceShipAt(9, i, true, ocean)) {
+				counterRow9Horizontal++;
+			}
+		}
+		for (int i = 0; i < 10; i++) {
+			if (!Submarine.okToPlaceShipAt(9, i, false, ocean)) {
+				counterRow9Vertical++;
+			}
+		}
+		assertEquals(counterRow9Vertical++, 10); 
+		assertEquals(counterRow9Horizontal++, 10);  
+		
+		// =====The Chunk below is verified===
+//		assertFalse(Submarine.okToPlaceShipAt(9, 0, true, ocean));
+//		assertFalse(Submarine.okToPlaceShipAt(9, 0, false, ocean));
+//		assertFalse(Submarine.okToPlaceShipAt(9, 1, true, ocean));
+//		assertFalse(Submarine.okToPlaceShipAt(9, 1, false, ocean));
+//		assertFalse(Submarine.okToPlaceShipAt(9, 2, true, ocean));
+//		assertFalse(Submarine.okToPlaceShipAt(9, 2, false, ocean));
+//		assertFalse(Submarine.okToPlaceShipAt(9, 3, true, ocean));
+//		assertFalse(Submarine.okToPlaceShipAt(9, 3, false, ocean));
+//		assertFalse(Submarine.okToPlaceShipAt(9, 4, true, ocean));
+//		assertFalse(Submarine.okToPlaceShipAt(9, 4, false, ocean));
+//		assertFalse(Submarine.okToPlaceShipAt(9, 5, true, ocean));
+//		assertFalse(Submarine.okToPlaceShipAt(9, 5, false, ocean));
+//		assertFalse(Submarine.okToPlaceShipAt(9, 6, true, ocean));
+//		assertFalse(Submarine.okToPlaceShipAt(9, 6, false, ocean));
+//		assertFalse(Submarine.okToPlaceShipAt(9, 7, true, ocean));
+//		assertFalse(Submarine.okToPlaceShipAt(9, 7, false, ocean));
+//		assertFalse(Submarine.okToPlaceShipAt(9, 8, true, ocean));
+//		assertFalse(Submarine.okToPlaceShipAt(9, 8, false, ocean));
+//		assertFalse(Submarine.okToPlaceShipAt(9, 9, true, ocean));
+//		assertFalse(Submarine.okToPlaceShipAt(9, 9, false, ocean));
 	}
 	
 	//Testing if ship row setters/getters work as expected
@@ -891,6 +943,8 @@ class JunitTesting {
 
 
 	}
+	
+	//Test getShipsType to see if it doesn't return null
 
 	//Test if shotsFired is updated as expected, this test no shots are fired, so Hitscount(); must be zero
 	@Test 
@@ -950,7 +1004,26 @@ class JunitTesting {
 		ocean.setUserInputs(input);
 		assertNotNull(ocean.userInputs.get(0));
 	}
-
-
+	
+	
+	/**
+	 * Test shootAt method to see if it updates the hit[] array within the ship when the
+	 * location [row][column] contains a ship
+	 */
+	
+//	@Test
+//	void CheckShootAt() {
+//		Destroyer Destroyer = new Destroyer();
+//		Ocean ocean = new Ocean();
+//		
+//        Destroyer.placeShipAt(2, 2, true, ocean);
+//        
+//        ocean.shootAt(2, 2);
+//        
+//        assertTrue(Destroyer.hit[0]);
+//        
+//		
+//		
+//	}
 
 }
