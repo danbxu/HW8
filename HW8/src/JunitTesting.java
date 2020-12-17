@@ -880,6 +880,17 @@ class JunitTesting {
 		assertFalse(ocean.shootAt(9, 9));
 
 	}
+	
+	//Test if shotsFired is updated as expected when there is a ship there at the fired location
+	@Test 
+	void CheckShotsFired2() {
+		Ocean ocean = new Ocean();
+		Submarine Submarine = new Submarine();
+		ocean.setShips(0, 5, Submarine);
+		assertTrue(ocean.shootAt(0, 5));
+
+
+	}
 
 	//Test if shotsFired is updated as expected, this test no shots are fired, so Hitscount(); must be zero
 	@Test 
@@ -890,6 +901,25 @@ class JunitTesting {
 	}
 
 
+	//Test isGameOver() when shipsSunk = 10
+	@Test 
+	void IsGameOver1() {
+		Ocean ocean = new Ocean();
+		ocean.setShipsSunk(10);
+		assertTrue(ocean.isGameOver());
+		
+	}
+	
+	//Test isGameOver() when shipsSunk < 10
+	@Test 
+	void IsGameOver2() {
+		Ocean ocean = new Ocean();
+		ocean.setShipsSunk(9);
+		assertFalse(ocean.isGameOver());
+		
+	}
+	
+	
 	//Test if shipsSunk getter works as expected
 	@Test 
 	void CheckShipsSunk() {
@@ -920,10 +950,6 @@ class JunitTesting {
 		ocean.setUserInputs(input);
 		assertNotNull(ocean.userInputs.get(0));
 	}
-
-
-
-
 
 
 

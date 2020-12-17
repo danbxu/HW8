@@ -193,6 +193,12 @@ public class Ocean {
 	int getShipsSunk() {
 		return shipsSunk;
 	}
+	
+	//Sets number of sunk ships, easier for JUnitTesting for isGameOver() method
+	int setShipsSunk(int input) {
+		this.shipsSunk = input;
+		return shipsSunk;	
+	}
 
 	//Returns T/F if the game is over. The game is over when all 10 ships are sunk
 	boolean isGameOver() {
