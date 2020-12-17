@@ -6,41 +6,80 @@ public abstract class Ship {
 	int length; //number of squares occupied by ship and empty sea location has length of 1
 	boolean horizontal; //true if the ship occupies a single row, false otherwise
 	boolean[] hit = new boolean [4]; //array of booleans telling weather that part of ship has been hit
-	//note this needs to be overriden if different types of ships
 
-	abstract int getLength(); //to be overridden
 
-	abstract String getShipType(); //to be overridden 
+	//Returns ship length and is overridden 
+	abstract int getLength(); 
 
+	//Returns ship type and is overridden
+	abstract String getShipType(); 
+
+	//Returns ship row position that is front of the ship. 
 	int getBowRow() {
 		return bowRow;
 	}
 
+	//Returns ship column position that is front of the ship. 
 	int getBowColumn() {
 		return bowColumn;
 	}
 
+	//Returns if the ship is horizontal or not
 	boolean isHorizontal() {
-		return horizontal; //true if ship occupies a single row, otherwise false
+		return horizontal; 
 	}
-
+	
+	/*
+	 * Sets row number of a ship's bow location
+	 * 
+	 * @param row
+	 */
 	void setBowRow(int row) {
 		this.bowRow = row;
 	}
 
+	/*
+	 * Sets column of a ship's bow location
+	 * 
+	 * @param column
+	 */
 	void setBowColumn(int column) {
 		this.bowColumn = column;
 	}
 
+	/*
+	 * Sets whether the ship is horizontal or vertical
+	 * 
+	 * @param horizontal 
+	 */
 	void setHorizontal(boolean horizontal) {
 		this.horizontal = horizontal;
 	}
 
 
+	/*
+	 * This method checks if the given ship can be legally placed horizontally/vertically
+	 * at the starting given location [row][column]. This ship will be placed in an instance of ocean so that all 
+	 * the ships are placed in the same ocean and that new locations [row][column] can be used to check against
+	 * other already existing ships in the ocean. 
+	 * 
+	 * The conditional ladders will basically check whether the ship is horizontal or vertical. Under those
+	 * two conditions, the method will check if the successive rows (if vertical) or successive columns (if horzontal)
+	 * can accommodate a ship of a given length.
+	 * 
+	 * This method will also boundary check and check if there are ships adjacent.
+	 * 
+	 * If the conditions of legally placing a ship are met at bow location [row][column], then the method
+	 * will return true, or otherwise, false if ship can not be placed. 
+	 * 
+	 * @param row
+	 * @param column
+	 * @param horizontal 
+	 * @param ocean
+	 * 
+	 */
 	boolean okToPlaceShipAt(int row, int column, boolean horizontal, Ocean ocean) {
 		int shipLeng = this.getLength();
-
-
 		boolean areaFine = true;
 
 		//		if (this.getShipType().equals("Submarine")) {
@@ -165,8 +204,6 @@ public abstract class Ship {
 		}
 
 		//from here on we check if boats are next to the location 
-
-
 		if (areaFine) {
 			for (int i = 0; i < shipLeng + 1; i++) {
 				if (horizontal && row == 0) {
@@ -231,11 +268,6 @@ public abstract class Ship {
 						}
 					}
 				}
-
-
-
-
-
 
 				if (!horizontal && column == 0) {
 					if(row == 0) { //If spot is top left corner of ocean
@@ -308,6 +340,16 @@ public abstract class Ship {
 
 
 
+	/**
+	 * This method places the given ship horizontally/vertically at the starting given location [row][column].
+	 * This method uses a for loop and uses the length of the ship to determine how many times to place the ships
+	 * in the ocean.
+	 * 
+	 * @param row
+	 * @param column
+	 * @param horizontal
+	 * @param ocean
+	 */
 	void placeShipAt(int row, int column, boolean horizontal, Ocean ocean) {
 
 		this.setBowColumn(column);
@@ -325,6 +367,14 @@ public abstract class Ship {
 
 	}
 
+	/*
+	 * This method will update the hit[] array of each the ship that happens to be at location [row][column]
+	 * only if the ship is not already sunk and that the getShipType at said location is not "empty." 
+	 * Otherwise, location [row][column] does not contain a ship. 
+	 * 
+	 * @param row
+	 * @param column
+	 */
 	boolean shootAt(int row, int column) {
 		if (!this.getShipType().equals("empty") && !this.isSunk()) {
 		//	Ship currentShip = ocean.getShipArray()[row][column];
@@ -336,12 +386,11 @@ public abstract class Ship {
 			}
 			return true;
 		}
-
-		//feed in an ocean so it it's always referring to the same ocean 
-
 		return false;
 	}
-
+	
+	
+	//This method returns whether the ship is sunk and is overridden
 	boolean isSunk() {
 		return true;
 	}
