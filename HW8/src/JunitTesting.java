@@ -945,6 +945,12 @@ class JunitTesting {
 	}
 	
 	//Test getShipsType to see if it doesn't return null
+	@Test
+	void checkGetShipsType() {
+		Battleship test = new Battleship();
+		//TODO
+	}
+	
 
 	//Test if shotsFired is updated as expected, this test no shots are fired, so Hitscount(); must be zero
 	@Test 
