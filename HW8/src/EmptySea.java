@@ -6,7 +6,7 @@ public class EmptySea extends Ship {
 	}
 	
 	@Override 
-	boolean shootAt(int row, int column, Ocean ocean) {
+	boolean shootAt(int row, int column) {
 		return false;
 	}
 	

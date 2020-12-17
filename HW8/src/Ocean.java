@@ -1,21 +1,34 @@
 import java.util.Random;
+import java.util.*;
 
 public class Ocean {
-	
+
 	public static Ship[][] ships = new Ship[10][10];
 	int shotsFired; 
 	int hitCount; //hit shit, increase it but hitting the same spot don't increase it
 	int shipsSunk; //increment to 10 total ships sunk
-	
-	
+	static ArrayList<int[]> userInputs = new ArrayList<int[]>();
+	int[] input = new int[2];
+
+
+	public int[] getInput() {
+		return input;
+	}
+
+	public void setInput(int[] input) {
+		this.input = input;
+		userInputs.add(input);
+	}
+
+
 	//Random 
 	Random randomRow = new Random();
 	Random randomColumn = new Random();
 	Random horOrVert = new Random();
 	int upperbound = 10; //0-9
 	//int randomOrientation = 2;
-	
-	
+
+
 	void setShips(int row, int column, Ship ship) {
 		ships[row][column] = ship;
 	}
@@ -24,7 +37,11 @@ public class Ocean {
 		shotsFired = 0;
 		hitCount = 0;
 		shipsSunk = 0;
-		
+		input = null;
+		//userInputs.clear();
+		int arr[] = {10, 10}; 
+		userInputs.add(arr);
+
 		//adds emptySea into null
 		for (int i = 0; i < 10; i++) {
 			for (int j = 0; j < 10; j++) {
@@ -34,30 +51,21 @@ public class Ocean {
 				}
 			}
 		}
-		
+
 		//TODO creates an empty ocean and fills the ships with Empty Seas
 		//initializes any game variables like shots fired.
 	}
-	
+
 	//checking the location to put a new ship randomly 
 	//boundary checks 
-	
+
+	public void setUserInputs(ArrayList<int[]> userInputs) {
+		this.userInputs = userInputs;
+	}
+
 	public void placeAllShipsRandomly() { //feed in a ship so that the code is cleaner
-		
-		
-//		int randomR = randomRow.nextInt(upperbound);
-//		int randomC = randomColumn.nextInt(upperbound);
-//		int horVert = horOrVert.nextInt(randomOrientation); //this will determine whether to place vertically or horizontally
-		
-		//int rows;
-		
-		
-		// 0  = horizontal
-		// 1 = vertical
-		
-		//boundary check and check location
-		
-		
+
+
 		Ship battleship = new Battleship();
 		Ship cruiser1 = new Cruiser();
 		Ship cruiser2 = new Cruiser();
@@ -69,7 +77,7 @@ public class Ocean {
 		Ship sub3 = new Submarine();
 		Ship sub4 = new Submarine();
 		Ship[] fleet = new Ship[10];
-		
+
 		for (int i = 0; i < 1; i++) {
 			fleet[i] = battleship;
 			fleet[i+1] = cruiser1;
@@ -82,12 +90,12 @@ public class Ocean {
 			fleet[i+8] = sub3;
 			fleet[i+9] = sub4;
 		}
-		
+
 		for (int i = 0; i < fleet.length; i++) {
 			int randomR = randomRow.nextInt(upperbound);
 			int randomC = randomColumn.nextInt(upperbound);
 			boolean horVert = horOrVert.nextBoolean();
-			
+
 			while(!fleet[i].okToPlaceShipAt(randomR, randomC, horVert, this)) {
 				randomR = randomRow.nextInt(upperbound);
 				randomC = randomColumn.nextInt(upperbound);
@@ -95,59 +103,10 @@ public class Ocean {
 			}
 			fleet[i].placeShipAt(randomR, randomC, horVert, this);
 		}
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-//		if (ships[randomR][randomC] == null) {
-//			if (rowOrColumn == 0) { //if to be placed horizontally
-//			
-//				//for loop checking row
-//				
-//				
-//				
-////				check by index
-////				
-////				//while loop for placing the ships 
-////				
-////				00000000
-////				o      0 
-////				o      0      
-////				o      0 
-////				o      0 
-////				o      0 
-////				00000000
-////			}
-////			
-////			if(rowOrColumn == 1) { //if to be placed vertically
-////				//forloop checking column
-//				
-//				
-//				System.out.println("to be put vertically and length is" + ship.getLength());
-//			}
-//		}
-	
-		
-		//perhaps use
-		
-		//ship.setBowColumn(holder)
-		//ship.getBowRow(holder)
-		
-		
-		
-		//start with big ships first
-		//put it here or try it with our random gen location
-		//check the ocean and 1 to all loations and buffer 1 cell around the boat       - - - -  //nested forloops for the grid i,j i - 1 , i + 1, j - 1, j + 1
-		
-		//this will create 
 	}
-	
+
+
+
 	boolean isOccupied(int row, int column) {
 		if (ships[row][column].getShipType().equals("empty")) { //would this have an issue with all different types of ships
 			//System.out.println("location is emptySea");
@@ -158,7 +117,7 @@ public class Ocean {
 			return true;
 		}
 	}
-	
+
 	boolean shootAt(int row, int column) {
 		shotsFired++;
 		if (!ships[row][column].getShipType().equals("empty") && !ships[row][column].isSunk()) {
@@ -169,23 +128,23 @@ public class Ocean {
 		//This updates shotsfired and hitscount, if the ship becomes sunk, the additional shots return false
 		return false;
 	}
-	
-	
+
+
 	int getShotsFired() {
 		return shotsFired;
 	}
-	
+
 	int getHitsCount() {
 		return hitCount;
 	}
-	
+
 	int getShipsSunk() {
 		return shipsSunk;
 	}
-	
+
 	boolean isGameOver() {
 		if (shipsSunk == 10) {
-		
+
 			return true;
 		}
 		else {
@@ -193,32 +152,86 @@ public class Ocean {
 			return false;
 		}
 	}
-	
+
 	//returns ship array 10x10
 	Ship[][] getShipArray() {
 		return ships;
 	}
-	
+
 	//only method without input out and 
 	void print() {
+		System.out.println("        The gameboard:");
+		System.out.println();
 		//TODO this prints the ocean with  0-9 on the tope and 0-9 on the left
 		//'S' to show where fired shots and hit a real ship
 		//'-' to show a location you have fired and nothing is there
 		//'x' to indicate a sunken ship
 		//'.'hitCount indicate a location that you have never fired upon
+
+
+		for (int i = 0; i < 10; i++ ) {
+			boolean hasBeenCalled = false;
+			if (i == 0) {
+				for (int j = 0; j < 10; j++) {
+					if (j ==0) {
+						System.out.print("   " + j);
+					}
+					else {
+						System.out.print("  " + j);
+					}
+				}
+				System.out.println();
+			}
+
+			for (int j = 0; j < 10; j++) {
+				hasBeenCalled = false;
+				String symbol = ".";
+				Ship currentShip = ships[i][j];
+				boolean isHor = currentShip.isHorizontal();
+				int column = currentShip.getBowColumn();
+				int row = currentShip.getBowRow();
+
+				if (userInputs != null) {
+					for (int k = 1; k < userInputs.size(); k++) {
+						if (userInputs.get(k)[0] == i && userInputs.get(k)[1] == j) {
+							hasBeenCalled = true;
+							//symbol = currentShip.toString();
+							
+						}
+					}
+				}
+
+				if (j == 0) {
+					System.out.print(i + " ");
+				}
+				if (hasBeenCalled) {
+					symbol = currentShip.toString();
+				}
+				System.out.print("[" + symbol + "]");
+//				hasBeenCalled = false;
+			}
+			System.out.println();
+		}
+		System.out.println("________________________________");
+
+
 	}
-	
-	
+
+
 	public static void main(String[] args) {
 		Ocean a = new Ocean();
 		a.placeAllShipsRandomly();
-		for (int i = 0; i < 10; i++) {
-			for (int k = 0; k < 10; k++) {
-				System.out.println("[" + i + "," + k + "]"+ ships[i][k].getShipType() + " " + ships[i][k].isHorizontal());
-			}
-		}
-//		a.placeAllShipsRandomly(b);
-//		a.placeAllShipsRandomly(c);
+		int [] arr = new int[2];
+		arr[0] = 7;
+		arr[1] = 3;
+		a.setInput(arr);
+		System.out.println(Arrays.toString(userInputs.get(1)));
+		a.print();
+		arr[0] = 2;
+		arr[1] = 4;
+		a.setInput(arr);
+		System.out.println(Arrays.toString(userInputs.get(2)));
+		a.print();
 	}
 
 }

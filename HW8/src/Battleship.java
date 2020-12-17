@@ -20,12 +20,12 @@ public class Battleship extends Ship {
 
 	@Override
 	public String toString() {
-		
-	//maybe use a for loop
-
-		
-		
-		return "S"; //return x if the ship is sunk
+		if (this.isSunk()) {
+			return "x";
+		}
+		else {
+			return "S";
+		}
 	}
 
 	@Override 
@@ -47,14 +47,5 @@ public class Battleship extends Ship {
 	@Override
 	String getShipType() {
 		return "Battleship";
-	}
-
-
-	public static void main(String[] args) {
-		Battleship a = new Battleship();
-
-		System.out.println(a.isSunk());
-
-		System.out.println(a.getLength());
 	}
 }

@@ -37,5 +37,15 @@ public class Destroyer extends Ship {
 			return false;
 		}
 	}
+	
+	@Override
+	public String toString() {
+		if (this.isSunk()) {
+			return "x";
+		}
+		else {
+			return "S";
+		}
+	}
 
 }

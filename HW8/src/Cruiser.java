@@ -36,10 +36,14 @@ public class Cruiser extends Ship {
 		}
 	}
 	
-	public static void main(String[] args) {
-		Cruiser a = new Cruiser();
-		System.out.println(a.getLength());
-		System.out.println(a.getShipType());
+	@Override
+	public String toString() {
+		if (this.isSunk()) {
+			return "x";
+		}
+		else {
+			return "S";
+		}
 	}
 
 }
