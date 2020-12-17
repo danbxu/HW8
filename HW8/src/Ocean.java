@@ -1,6 +1,11 @@
 import java.util.Random;
 import java.util.*;
 
+/**
+ * 
+ * @author coreyparker and danxu
+ *
+ */
 public class Ocean {
 
 	public Ship[][] ships = new Ship[10][10];

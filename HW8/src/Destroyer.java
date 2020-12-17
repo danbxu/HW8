@@ -1,4 +1,8 @@
-
+/**
+ * 
+ * @author coreyparker and danxu
+ *
+ */
 public class Destroyer extends Ship {
 
 	/**

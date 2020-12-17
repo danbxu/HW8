@@ -1,4 +1,8 @@
-
+/**
+ * 
+ * @author coreyparker and danxu
+ *
+ */
 public abstract class Ship {
 
 	int bowRow; //0-9 the front of the ship

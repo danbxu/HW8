@@ -1,19 +1,23 @@
 import java.util.*;
+/**
+ * 
+ * @author coreyparker and danxu
+ *
+ */
 
-public class GameRunner {
-	int runningScore = 1000;
+public class BattleshipGame {
+	int runningScore = 1000; //keeping an upper bound so the user's first score is the lowest score 
 
 	public void RunGame() {
 		Scanner s = new Scanner(System.in);
-		Ocean ocean = new Ocean();
+		Ocean ocean = new Ocean(); //create new ocean
 		ocean.placeAllShipsRandomly();
-		//System.out.println("Here!");
-
 		ocean.print();
 
-		//plse delete
-		//ocean.shipsSunk = 10;
-		while (!ocean.isGameOver()) {
+		while (!ocean.isGameOver()) { //allow to keep going through if the game is not over
+			
+			//below section just makes sure the user input is 0-9 for rows and columns 
+			
 			System.out.print("Please input the row you want to fire on: ");
 			while (!s.hasNextInt()) { 
 				System.out.print("Please input a positive row number less than 10: ");
@@ -45,14 +49,14 @@ public class GameRunner {
 				input2 = s.nextInt();
 			}
 			int colNum = input2;
-			int[] arr = {rowNum, colNum};
-			ocean.setUserInputs(arr);
-			ocean.shootAt(arr[0], arr[1]);
-			Ship shotShip = ocean.getShipArray()[arr[0]][arr[1]];
-			boolean shot = shotShip.shootAt(arr[0], arr[1]);
+			int[] arr = {rowNum, colNum}; //make the row and column inputs into an array 
+			ocean.setUserInputs(arr); //set the user inputs 
+			ocean.shootAt(arr[0], arr[1]); //shoot at the ship in ocean class
+			Ship shotShip = ocean.getShipArray()[arr[0]][arr[1]]; 
+			boolean shot = shotShip.shootAt(arr[0], arr[1]); //shoot at the ship in ship class
 
 			if (shotShip.isSunk() && shot == true) {
-				ocean.shipsSunk++;
+				ocean.shipsSunk++; //only add to the sunk ships if it's only been sunk in this turn 
 			}
 			System.out.println();
 			ocean.print();
@@ -66,7 +70,7 @@ public class GameRunner {
 		}
 
 
-		if (ocean.getShotsFired() < runningScore) {
+		if (ocean.getShotsFired() < runningScore) { //if the current score is less than the previous one, then update current score as best score 
 			runningScore = ocean.getShotsFired();
 		}
 
@@ -77,17 +81,12 @@ public class GameRunner {
 		System.out.println();
 
 	}
-	public void RunAgain() {
+	public void RunAgain() { //this method allows the user to run the game over again 
 		Scanner s = new Scanner(System.in);	
-		//this.RunGame();
-		int input3 = 1;
+		int input3 = 1; //set input to yes they want to play 
 		while (input3 == 1) {
-			//GameRunner r = new GameRunner();
 			this.RunGame();
-			
-
-		//	this.RunGame();
-
+			//below stuff is to make sure the user either puts in a 1 or 2
 			System.out.print("Would you like to play again? Please hit 1 for yes 2 for no: ");
 			while (!s.hasNextInt()) { 
 				System.out.print("Please input 1 (yes) or 2 (no): ");
@@ -102,17 +101,6 @@ public class GameRunner {
 				}
 				input3 = s.nextInt();
 			}
-//			if (input3 == 1) {
-//				System.out.println("Back for more?");
-//				//			System.out.println();
-//				//			Ocean ocean = new Ocean();
-//				//			ocean.shipsSunk = 0;
-//				//			this.RunGame();
-//				//		}
-//			}
-//			else {
-//				System.out.println("All good! Thanks for playing!");
-//			}
 		}
 		System.out.println("Thanks for playing!");
 	}
@@ -120,37 +108,7 @@ public class GameRunner {
 
 
 	public static void main(String[] args) {
-		GameRunner r = new GameRunner();
-		r.RunAgain();
-		//r.RunGame();
-	//	System.out.println("finished 1");
-//		GameRunner s = new GameRunner();
-//		s.RunGame();
-		//r.RunGame();
-		//System.out.println("hi");
-		//Scanner s = new Scanner(System.in);
-		//		int choice = 1;
-		//		while(choice == 1) {
-		//			r.RunGame();
-		//			System.out.print("Would you like to play again? Please hit 1 for yes 2 for no: ");
-		//			while (!s.hasNextInt()) { 
-		//				System.out.print("Please input 1 (yes) or 2 (no): ");
-		//				s.next();
-		//			}
-		//			int input = s.nextInt();
-		//			while(input > 2 || input < 0) {
-		//				System.out.print("Please input 1 (yes) or 2 (no): ");
-		//				while (!s.hasNextInt()) {
-		//					System.out.print("Please input 1 (yes) or 2 (no): ");
-		//					s.next();
-		//				}
-		//				input = s.nextInt();
-		//			}
-		//			choice = input;
-		//			if (choice == 1) {
-		//				System.out.println("Back for more?");
-		//			}
-		//		}
-		//		System.out.println("All good! Have a great day!");
+		BattleshipGame b = new BattleshipGame();
+		b.RunAgain();
 	}
 }

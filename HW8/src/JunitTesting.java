@@ -5,7 +5,11 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import junit.framework.Assert;
-
+/**
+ * 
+ * @author coreyparker and danxu
+ *
+ */
 class JunitTesting {
 
 	@BeforeEach
