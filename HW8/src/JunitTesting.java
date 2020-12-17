@@ -1,4 +1,5 @@
 import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -257,16 +258,65 @@ class JunitTesting {
 	
 	//TESTING OCEAN ==================================================================
 	
-
-	//Testing if input setters/getters work as expected
+	//Testing setShips method TODO TO CHECK IF THIS IS ENOUGH
 	@Test
-	void CheckInputSettersGettersRow() {
-		Ocean test = new Ocean();
-		int[] input = {3,4};
-		int[] Actual = {3,4};
-		test.setInput(input);
-		assertArrayEquals(test.getInput(), Actual);
+	void CheckSetShip() {
+		Battleship test = new Battleship();
+		Ocean ocean = new Ocean();
+		ocean.setShips(0, 5, test);
 	}
+
+	//Test if shotsFired is updated as expected and BOTTOM RIGHT CORNER of grid should mostly return false
+	@Test 
+	void CheckShotsFired() {
+		Ocean ocean = new Ocean();
+		ocean.shootAt(0, 5);
+		assertEquals(ocean.getShotsFired(), 1);
+		assertFalse(ocean.shootAt(9, 9));
+		
+	}
+	
+	//Test if shotsFired is updated as expected, this test no shots are fired, so Hitscount(); must be zero
+	@Test 
+	void CheckgetHitsCount() {
+		Ocean ocean = new Ocean();
+		assertEquals(ocean.getHitsCount(), 0);
+		
+	}
+	
+	
+	//Test if shipsSunk getter works as expected
+	@Test 
+	void CheckShipsSunk() {
+		Ocean ocean = new Ocean();
+		assertEquals(ocean.getShipsSunk(), 0);
+		
+	}
+	
+	//Test if getShipArray() returns as expected and should not be null because it creates emptySea in all cells
+	@Test 
+	void CheckGetShipArray() {
+		Ocean ocean = new Ocean();
+		assertNotNull(ocean.getShipArray());
+	}
+	
+	//Test if isOccupied() returns false when the ocean is first instantiated, because all emptySeas are in each location
+	@Test 
+	void CheckisOccupied() {
+		Ocean ocean = new Ocean();
+		assertFalse(ocean.isOccupied(0, 2));
+	}
+	
+	//Test if setUserinputs() setter is working as expected
+	@Test 
+	void CheckUserInputs() {
+		Ocean ocean = new Ocean();
+		int[] input = {2,4};
+		ocean.setUserInputs(input);
+		assertNotNull(ocean.userInputs.get(0));
+	}
+	
+	
 	
 	
 	
