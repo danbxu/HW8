@@ -231,62 +231,151 @@ class JunitTesting {
 
 		test.placeShipAt(5, 0, true, ocean);
 		test2.placeShipAt(0, 5, false, ocean);
-		
+
 
 		assertTrue(ocean.getshipsType(5, 0).contains("Battleship"));
 		assertTrue(ocean.getshipsType(0, 5).contains("Cruiser"));
 
 	}
 	//This will test the if-conditionals in CheckOkToPlaceShipAt returns true without any ships already placed
-	//This will also check if ship placed will be out of boundary, which will return false 
 	@Test
-	void CheckOkToPlaceShipAt1() {
+	void CheckOkToPlaceShipAtV1() {
 		Battleship Battleship = new Battleship();
 		Ocean ocean = new Ocean();
 
 		//Test Top left corner horizontal/vertical
 		assertTrue(Battleship.okToPlaceShipAt(0, 0, true, ocean)); 
 		assertTrue(Battleship.okToPlaceShipAt(0, 0, false, ocean));
+	}
+
+	//This will test the if-conditionals in CheckOkToPlaceShipAt returns true without any ships already placed
+	@Test
+	void CheckOkToPlaceShipAtV2() {
+		Battleship Battleship = new Battleship();
+		Ocean ocean = new Ocean();
 
 		//Test Left most column [6][0]: horizontal legal, vertical legal
 		assertTrue(Battleship.okToPlaceShipAt(6, 0, true, ocean));
 		assertTrue(Battleship.okToPlaceShipAt(6, 0, false, ocean));
+	}
+
+	//This will test the if-conditionals in CheckOkToPlaceShipAt returns true without any ships already placed
+	@Test
+	void CheckOkToPlaceShipAtV3() {
+		Battleship Battleship = new Battleship();
+		Ocean ocean = new Ocean();
 
 		//Test bottom Left corner [9][9]: horizontal legal, vertical illegal
 		assertTrue(Battleship.okToPlaceShipAt(9, 0, true, ocean));
 		assertFalse(Battleship.okToPlaceShipAt(9, 0, false, ocean));
 
-		//Test Left column Middle [2][0]: horizontal legal, vertical legal
+
+	}
+
+	//This will test the if-conditionals in CheckOkToPlaceShipAt returns true without any ships already placed
+	@Test
+	void CheckOkToPlaceShipAtV4() {
+		Battleship Battleship = new Battleship();
+		Ocean ocean = new Ocean();
+
+		//		//Test Left column Middle [2][0]: horizontal legal, vertical legal
 		assertTrue(Battleship.okToPlaceShipAt(2, 0, true, ocean));
 		assertTrue(Battleship.okToPlaceShipAt(2, 0, false, ocean));
 
-		//Test First Row Middle [0][2]: horizontal legal, vertical legal
+	}
+
+	//This will test the if-conditionals in CheckOkToPlaceShipAt returns true without any ships already placed
+	@Test
+	void CheckOkToPlaceShipAtV5() {
+		Battleship Battleship = new Battleship();
+		Ocean ocean = new Ocean();
+
+		//		//Test First Row Middle [0][2]: horizontal legal, vertical legal
 		assertTrue(Battleship.okToPlaceShipAt(0, 2, true, ocean));
 		assertTrue(Battleship.okToPlaceShipAt(0, 2, true, ocean));
+
+	}
+
+	//This will test the if-conditionals in CheckOkToPlaceShipAt returns true without any ships already placed
+	@Test
+	void CheckOkToPlaceShipAtV6() {
+		Battleship Battleship = new Battleship();
+		Ocean ocean = new Ocean();
 
 		//Test First Row + right corner[0][6]: horizontal legal, vertical legal
 		assertTrue(Battleship.okToPlaceShipAt(0, 6, true, ocean));
 		assertTrue(Battleship.okToPlaceShipAt(0, 6, true, ocean));
 
+	}
+
+	//This will test the if-conditionals in CheckOkToPlaceShipAt returns true without any ships already placed
+	@Test
+	void CheckOkToPlaceShipAtV7() {
+		Battleship Battleship = new Battleship();
+		Ocean ocean = new Ocean();
+
 		//Test First Row Middle [0][2]: horizontal legal, vertical legal
 		assertTrue(Battleship.okToPlaceShipAt(0, 2, true, ocean));
 		assertTrue(Battleship.okToPlaceShipAt(0, 2, true, ocean));
 
-		//Test Top right corner [0][9]: horizontal illegal, vertical legal
+	}
+
+	//This will test the if-conditionals in CheckOkToPlaceShipAt returns true without any ships already placed
+	@Test
+	void CheckOkToPlaceShipAtV8() {
+		Battleship Battleship = new Battleship();
+		Ocean ocean = new Ocean();
+
+		//		//Test Top right corner [0][9]: horizontal illegal, vertical legal
 		assertFalse(Battleship.okToPlaceShipAt(0, 9, true, ocean));
 		assertTrue(Battleship.okToPlaceShipAt(0, 9, false, ocean));
 
-		//Test Right column middle [2][9] horizontal illegal, vertical legal
+	}
+
+
+	//This will test the if-conditionals in CheckOkToPlaceShipAt returns true without any ships already placed
+	@Test
+	void CheckOkToPlaceShipAtV9() {
+		Battleship Battleship = new Battleship();
+		Ocean ocean = new Ocean();
+
+		//		//Test Right column middle [2][9] horizontal illegal, vertical legal
 		assertFalse(Battleship.okToPlaceShipAt(2, 9, true, ocean));
 		assertTrue(Battleship.okToPlaceShipAt(2, 9, false, ocean));
+
+	}
+
+
+	//This will test the if-conditionals in CheckOkToPlaceShipAt returns true without any ships already placed
+	@Test
+	void CheckOkToPlaceShipAtV10() {
+		Battleship Battleship = new Battleship();
+		Ocean ocean = new Ocean();
 
 		//Test bottom Right corner [9][9] horizontal illegal, vertical illegal
 		assertFalse(Battleship.okToPlaceShipAt(9, 9, true, ocean));
 		assertFalse(Battleship.okToPlaceShipAt(9, 9, false, ocean));
 
+	}
+
+	//This will test the if-conditionals in CheckOkToPlaceShipAt returns true without any ships already placed
+	@Test
+	void CheckOkToPlaceShipAtV11() {
+		Battleship Battleship = new Battleship();
+		Ocean ocean = new Ocean();
+
 		//Test bottom Middle [9][2] horizontal legal, vertical illegal
 		assertTrue(Battleship.okToPlaceShipAt(9, 2, true, ocean));
 		assertFalse(Battleship.okToPlaceShipAt(9, 2, false, ocean));
+
+	}
+
+
+	//This will test the if-conditionals in CheckOkToPlaceShipAt returns true without any ships already placed
+	@Test
+	void CheckOkToPlaceShipAtEdges1() {
+		Battleship Battleship = new Battleship();
+		Ocean ocean = new Ocean();
 
 		//Test ships not next to the edges
 		//Row 1 and not along the outer edges of the grid
@@ -306,8 +395,17 @@ class JunitTesting {
 		assertTrue(Battleship.okToPlaceShipAt(1, 7, false, ocean));
 		assertFalse(Battleship.okToPlaceShipAt(1, 8, true, ocean));
 		assertTrue(Battleship.okToPlaceShipAt(1, 8, false, ocean));
+	}
 
-		//Row 2 and not along the outer edges of the grid
+
+	//This will test the if-conditionals in CheckOkToPlaceShipAt returns true without any ships already placed
+	@Test
+	void CheckOkToPlaceShipAtEdges2() {
+		Battleship Battleship = new Battleship();
+		Ocean ocean = new Ocean();
+
+		//Test ships not next to the edges
+		//		//Row 2 and not along the outer edges of the grid
 		assertTrue(Battleship.okToPlaceShipAt(2, 1, true, ocean));
 		assertTrue(Battleship.okToPlaceShipAt(2, 1, false, ocean));
 		assertTrue(Battleship.okToPlaceShipAt(2, 2, true, ocean));
@@ -324,7 +422,16 @@ class JunitTesting {
 		assertTrue(Battleship.okToPlaceShipAt(2, 7, false, ocean));
 		assertFalse(Battleship.okToPlaceShipAt(2, 8, true, ocean));
 		assertTrue(Battleship.okToPlaceShipAt(2, 8, false, ocean));
+	}
 
+
+	//This will test the if-conditionals in CheckOkToPlaceShipAt returns true without any ships already placed
+	@Test
+	void CheckOkToPlaceShipAtEdges3() {
+		Battleship Battleship = new Battleship();
+		Ocean ocean = new Ocean();
+
+		//Test ships not next to the edges
 		//Row 3 and not along the outer edges of the grid
 		assertTrue(Battleship.okToPlaceShipAt(3, 1, true, ocean));
 		assertTrue(Battleship.okToPlaceShipAt(3, 1, false, ocean));
@@ -342,7 +449,16 @@ class JunitTesting {
 		assertTrue(Battleship.okToPlaceShipAt(3, 7, false, ocean));
 		assertFalse(Battleship.okToPlaceShipAt(3, 8, true, ocean));
 		assertTrue(Battleship.okToPlaceShipAt(3, 8, false, ocean));
+	}
 
+
+	//This will test the if-conditionals in CheckOkToPlaceShipAt returns true without any ships already placed
+	@Test
+	void CheckOkToPlaceShipAtEdges4() {
+		Battleship Battleship = new Battleship();
+		Ocean ocean = new Ocean();
+
+		//Test ships not next to the edges
 		//Row 4 and not along the outer edges of the grid
 		assertTrue(Battleship.okToPlaceShipAt(4, 1, true, ocean));
 		assertTrue(Battleship.okToPlaceShipAt(4, 1, false, ocean));
@@ -360,7 +476,15 @@ class JunitTesting {
 		assertTrue(Battleship.okToPlaceShipAt(4, 7, false, ocean));
 		assertFalse(Battleship.okToPlaceShipAt(4, 8, true, ocean));
 		assertTrue(Battleship.okToPlaceShipAt(4, 8, false, ocean));
+	}
 
+	//This will test the if-conditionals in CheckOkToPlaceShipAt returns true without any ships already placed
+	@Test
+	void CheckOkToPlaceShipAtEdges5() {
+		Battleship Battleship = new Battleship();
+		Ocean ocean = new Ocean();
+
+		//Test ships not next to the edges
 		//Row5 and not along the outer edges of the grid
 		assertTrue(Battleship.okToPlaceShipAt(5, 1, true, ocean));
 		assertTrue(Battleship.okToPlaceShipAt(5, 1, false, ocean));
@@ -378,7 +502,18 @@ class JunitTesting {
 		assertTrue(Battleship.okToPlaceShipAt(5, 7, false, ocean));
 		assertFalse(Battleship.okToPlaceShipAt(5, 8, true, ocean));
 		assertTrue(Battleship.okToPlaceShipAt(5, 8, false, ocean));
-		
+	}
+
+
+
+
+	//This will test the if-conditionals in CheckOkToPlaceShipAt returns true without any ships already placed
+	@Test
+	void CheckOkToPlaceShipAtEdges6() {
+		Battleship Battleship = new Battleship();
+		Ocean ocean = new Ocean();
+
+		//Test ships not next to the edges
 		//Row6 and not along the outer edges of the grid
 		assertTrue(Battleship.okToPlaceShipAt(6, 1, true, ocean));
 		assertTrue(Battleship.okToPlaceShipAt(6, 1, false, ocean));
@@ -396,7 +531,16 @@ class JunitTesting {
 		assertTrue(Battleship.okToPlaceShipAt(6, 7, false, ocean));
 		assertFalse(Battleship.okToPlaceShipAt(6, 8, true, ocean));
 		assertTrue(Battleship.okToPlaceShipAt(6, 8, false, ocean));
-		
+	}
+
+
+	//This will test the if-conditionals in CheckOkToPlaceShipAt returns true without any ships already placed
+	@Test
+	void CheckOkToPlaceShipAtEdges7() {
+		Battleship Battleship = new Battleship();
+		Ocean ocean = new Ocean();
+
+		//Test ships not next to the edges
 		//Row7 and not along the outer edges of the grid
 		assertTrue(Battleship.okToPlaceShipAt(7, 1, true, ocean));
 		assertFalse(Battleship.okToPlaceShipAt(7, 1, false, ocean));
@@ -414,7 +558,16 @@ class JunitTesting {
 		assertFalse(Battleship.okToPlaceShipAt(7, 7, false, ocean));
 		assertFalse(Battleship.okToPlaceShipAt(7, 8, true, ocean));
 		assertFalse(Battleship.okToPlaceShipAt(7, 8, false, ocean));
-		
+	}
+
+
+	//This will test the if-conditionals in CheckOkToPlaceShipAt returns true without any ships already placed
+	@Test
+	void CheckOkToPlaceShipAtEdges8() {
+		Battleship Battleship = new Battleship();
+		Ocean ocean = new Ocean();
+
+		//Test ships not next to the edges
 		//Row8 and not along the outer edges of the grid
 		assertTrue(Battleship.okToPlaceShipAt(8, 1, true, ocean));
 		assertFalse(Battleship.okToPlaceShipAt(8, 1, false, ocean));
@@ -433,7 +586,8 @@ class JunitTesting {
 		assertFalse(Battleship.okToPlaceShipAt(8, 8, true, ocean));
 		assertFalse(Battleship.okToPlaceShipAt(8, 8, false, ocean));
 	}
-	
+
+
 	/*
 	 * Tests whether the if-conditions returns false when there is already a ship in every spot in Ships 2D array
 	 * Note every RowX will have 10 vertical and 10 horizontal cases
@@ -441,50 +595,33 @@ class JunitTesting {
 	 * to count the number of falses. Since we put a submarine into every cell in 
 	 * the ships[][] 2D array, every new okToPlaceShip() will return false
 	 */
+	
+	/**=====================================
+	 * Checking Row0 horizontal and vertical 
+	 *=====================================
+	 */
+	
 	@Test
-	void CheckOkToPlaceShipAt2() {
+	void CheckOkToPlaceShipAtFalse0() {
 		int counterRow0Horizontal = 0;
 		int counterRow0Vertical = 0;
-		int counterRow1Horizontal = 0;
-		int counterRow1Vertical = 0;
-		int counterRow2Horizontal = 0;
-		int counterRow2Vertical = 0;
-		int counterRow3Horizontal = 0;
-		int counterRow3Vertical = 0;
-		int counterRow4Horizontal = 0;
-		int counterRow4Vertical = 0;
-		int counterRow5Horizontal = 0;
-		int counterRow5Vertical = 0;
-		int counterRow6Horizontal = 0;
-		int counterRow6Vertical = 0;
-		int counterRow7Horizontal = 0;
-		int counterRow7Vertical = 0;
-		int counterRow8Horizontal = 0;
-		int counterRow8Vertical = 0;
-		int counterRow9Horizontal = 0;
-		int counterRow9Vertical = 0;
 
-		
 		Submarine Submarine = new Submarine();
 		Ocean ocean = new Ocean();
-		
+
 		//Put submarine in every cell in the ships[][] 2D array
 		for (int i = 0; i < 9; i++) {
 			for (int j = 0; j < 9; j++) {
 				ocean.setShips(i, j, Submarine);
 			}
 		}
-		
-		/**=====================================
-		 * Checking Row0 horizontal and vertical 
-		 *=====================================
-		 */
+
 		for (int i = 0; i < 10; i++) {
 			if (!Submarine.okToPlaceShipAt(0, i, true, ocean)) {
 				counterRow0Horizontal++;
 			}
 		}
-		
+
 		for (int i = 0; i < 10; i++) {
 			if (!Submarine.okToPlaceShipAt(0, i, false, ocean)) {
 				counterRow0Vertical++;
@@ -492,33 +629,37 @@ class JunitTesting {
 		}
 		assertEquals(counterRow0Vertical++, 10); 
 		assertEquals(counterRow0Horizontal++, 10); 
-// =====The Chunk below is verified====
-//		assertFalse(Submarine.okToPlaceShipAt(0, 0, true, ocean));
-//		assertFalse(Submarine.okToPlaceShipAt(0, 0, false, ocean));
-//		assertFalse(Submarine.okToPlaceShipAt(0, 1, true, ocean));
-//		assertFalse(Submarine.okToPlaceShipAt(0, 1, false, ocean));
-//		assertFalse(Submarine.okToPlaceShipAt(0, 2, true, ocean));
-//		assertFalse(Submarine.okToPlaceShipAt(0, 2, false, ocean));
-//		assertFalse(Submarine.okToPlaceShipAt(0, 3, true, ocean));
-//		assertFalse(Submarine.okToPlaceShipAt(0, 3, false, ocean));
-//		assertFalse(Submarine.okToPlaceShipAt(0, 4, true, ocean));
-//		assertFalse(Submarine.okToPlaceShipAt(0, 4, false, ocean));
-//		assertFalse(Submarine.okToPlaceShipAt(0, 5, true, ocean));
-//		assertFalse(Submarine.okToPlaceShipAt(0, 5, false, ocean));
-//		assertFalse(Submarine.okToPlaceShipAt(0, 6, true, ocean));
-//		assertFalse(Submarine.okToPlaceShipAt(0, 6, false, ocean));
-//		assertFalse(Submarine.okToPlaceShipAt(0, 7, true, ocean));
-//		assertFalse(Submarine.okToPlaceShipAt(0, 7, false, ocean));
-//		assertFalse(Submarine.okToPlaceShipAt(0, 8, true, ocean));
-//		assertFalse(Submarine.okToPlaceShipAt(0, 8, false, ocean));
-//		assertFalse(Submarine.okToPlaceShipAt(0, 9, true, ocean));
-//		assertFalse(Submarine.okToPlaceShipAt(0, 9, false, ocean));
-		
-		
-		/**=====================================
-		 * Checking Row1 horizontal and vertical 
-		 *=====================================
-		 */
+	}
+
+	/*
+	 * Tests whether the if-conditions returns false when there is already a ship in every spot in Ships 2D array
+	 * Note every RowX will have 10 vertical and 10 horizontal cases
+	 * Instead of doing the giant chunk commented out below, we used for loops
+	 * to count the number of falses. Since we put a submarine into every cell in 
+	 * the ships[][] 2D array, every new okToPlaceShip() will return false
+	 */
+	
+	/**=====================================
+	 * Checking Row1 horizontal and vertical 
+	 *=====================================
+	 */
+
+	@Test
+	void CheckOkToPlaceShipAtFalse1() {
+		int counterRow1Horizontal = 0;
+		int counterRow1Vertical = 0;
+
+
+		Submarine Submarine = new Submarine();
+		Ocean ocean = new Ocean();
+
+		//Put submarine in every cell in the ships[][] 2D array
+		for (int i = 0; i < 9; i++) {
+			for (int j = 0; j < 9; j++) {
+				ocean.setShips(i, j, Submarine);
+			}
+		}
+
 		for (int i = 0; i < 10; i++) {
 			if (!Submarine.okToPlaceShipAt(1, i, true, ocean)) {
 				counterRow1Horizontal++;
@@ -531,40 +672,43 @@ class JunitTesting {
 		}
 		assertEquals(counterRow1Vertical++, 10); 
 		assertEquals(counterRow1Horizontal++, 10); 
-		
-// =====The Chunk below is verified====
-//		assertFalse(Submarine.okToPlaceShipAt(1, 0, true, ocean));
-//		assertFalse(Submarine.okToPlaceShipAt(1, 0, false, ocean));
-//		assertFalse(Submarine.okToPlaceShipAt(1, 1, true, ocean));
-//		assertFalse(Submarine.okToPlaceShipAt(1, 1, false, ocean));
-//		assertFalse(Submarine.okToPlaceShipAt(1, 2, true, ocean));
-//		assertFalse(Submarine.okToPlaceShipAt(1, 2, false, ocean));
-//		assertFalse(Submarine.okToPlaceShipAt(1, 3, true, ocean));
-//		assertFalse(Submarine.okToPlaceShipAt(1, 3, false, ocean));
-//		assertFalse(Submarine.okToPlaceShipAt(1, 4, true, ocean));
-//		assertFalse(Submarine.okToPlaceShipAt(1, 4, false, ocean));
-//		assertFalse(Submarine.okToPlaceShipAt(1, 5, true, ocean));
-//		assertFalse(Submarine.okToPlaceShipAt(1, 5, false, ocean));
-//		assertFalse(Submarine.okToPlaceShipAt(1, 6, true, ocean));
-//		assertFalse(Submarine.okToPlaceShipAt(1, 6, false, ocean));
-//		assertFalse(Submarine.okToPlaceShipAt(1, 7, true, ocean));
-//		assertFalse(Submarine.okToPlaceShipAt(1, 7, false, ocean));
-//		assertFalse(Submarine.okToPlaceShipAt(1, 8, true, ocean));
-//		assertFalse(Submarine.okToPlaceShipAt(1, 8, false, ocean));
-//		assertFalse(Submarine.okToPlaceShipAt(1, 9, true, ocean));
-//		assertFalse(Submarine.okToPlaceShipAt(1, 9, false, ocean));
-		
-		
-		/**=====================================
-		 * Checking Row2 horizontal and vertical 
-		 *=====================================
-		 */
+	}
+	
+	/*
+	 * Tests whether the if-conditions returns false when there is already a ship in every spot in Ships 2D array
+	 * Note every RowX will have 10 vertical and 10 horizontal cases
+	 * Instead of doing the giant chunk commented out below, we used for loops
+	 * to count the number of falses. Since we put a submarine into every cell in 
+	 * the ships[][] 2D array, every new okToPlaceShip() will return false
+	 */
+	
+	/**=====================================
+	 * Checking Row2 horizontal and vertical 
+	 *=====================================
+	 */
+
+	@Test
+	void CheckOkToPlaceShipAtFalse2() {
+
+		int counterRow2Horizontal = 0;
+		int counterRow2Vertical = 0;
+
+		Submarine Submarine = new Submarine();
+		Ocean ocean = new Ocean();
+
+		//Put submarine in every cell in the ships[][] 2D array
+		for (int i = 0; i < 9; i++) {
+			for (int j = 0; j < 9; j++) {
+				ocean.setShips(i, j, Submarine);
+			}
+		}
+
 		for (int i = 0; i < 10; i++) {
 			if (!Submarine.okToPlaceShipAt(2, i, true, ocean)) {
 				counterRow2Horizontal++;
 			}
 		}
-		
+
 		for (int i = 0; i < 10; i++) {
 			if (!Submarine.okToPlaceShipAt(2, i, false, ocean)) {
 				counterRow2Vertical++;
@@ -572,80 +716,88 @@ class JunitTesting {
 		}
 		assertEquals(counterRow2Vertical++, 10); 
 		assertEquals(counterRow2Horizontal++, 10); 
-		
-// =====The Chunk below is verified====
-//		assertFalse(Submarine.okToPlaceShipAt(2, 0, true, ocean));
-//		assertFalse(Submarine.okToPlaceShipAt(2, 0, false, ocean));
-//		assertFalse(Submarine.okToPlaceShipAt(2, 1, true, ocean));
-//		assertFalse(Submarine.okToPlaceShipAt(2, 1, false, ocean));
-//		assertFalse(Submarine.okToPlaceShipAt(2, 2, true, ocean));
-//		assertFalse(Submarine.okToPlaceShipAt(2, 2, false, ocean));
-//		assertFalse(Submarine.okToPlaceShipAt(2, 3, true, ocean));
-//		assertFalse(Submarine.okToPlaceShipAt(2, 3, false, ocean));
-//		assertFalse(Submarine.okToPlaceShipAt(2, 4, true, ocean));
-//		assertFalse(Submarine.okToPlaceShipAt(2, 4, false, ocean));
-//		assertFalse(Submarine.okToPlaceShipAt(2, 5, true, ocean));
-//		assertFalse(Submarine.okToPlaceShipAt(2, 5, false, ocean));
-//		assertFalse(Submarine.okToPlaceShipAt(2, 6, true, ocean));
-//		assertFalse(Submarine.okToPlaceShipAt(2, 6, false, ocean));
-//		assertFalse(Submarine.okToPlaceShipAt(2, 7, true, ocean));
-//		assertFalse(Submarine.okToPlaceShipAt(2, 7, false, ocean));
-//		assertFalse(Submarine.okToPlaceShipAt(2, 8, true, ocean));
-//		assertFalse(Submarine.okToPlaceShipAt(2, 8, false, ocean));
-//		assertFalse(Submarine.okToPlaceShipAt(2, 9, true, ocean));
-//		assertFalse(Submarine.okToPlaceShipAt(2, 9, false, ocean));
-		
 
-		/**=====================================
-		 * Checking Row3 horizontal and vertical 
-		 *=====================================
-		 */
+	}
+	
+	/*
+	 * Tests whether the if-conditions returns false when there is already a ship in every spot in Ships 2D array
+	 * Note every RowX will have 10 vertical and 10 horizontal cases
+	 * Instead of doing the giant chunk commented out below, we used for loops
+	 * to count the number of falses. Since we put a submarine into every cell in 
+	 * the ships[][] 2D array, every new okToPlaceShip() will return false
+	 */
+	
+	/**=====================================
+	 * Checking Row3 horizontal and vertical 
+	 *=====================================
+	 */
+
+	@Test
+	void CheckOkToPlaceShipAtFalse3() {
+
+		int counterRow3Horizontal = 0;
+		int counterRow3Vertical = 0;
+
+		Submarine Submarine = new Submarine();
+		Ocean ocean = new Ocean();
+
+		//Put submarine in every cell in the ships[][] 2D array
+		for (int i = 0; i < 9; i++) {
+			for (int j = 0; j < 9; j++) {
+				ocean.setShips(i, j, Submarine);
+			}
+		}
+
 		for (int i = 0; i < 10; i++) {
 			if (!Submarine.okToPlaceShipAt(3, i, true, ocean)) {
 				counterRow3Horizontal++;
 			}
 		}
-		
+
 		for (int i = 0; i < 10; i++) {
 			if (!Submarine.okToPlaceShipAt(3, i, false, ocean)) {
 				counterRow3Vertical++;
 			}
 		}
 		assertEquals(counterRow3Vertical++, 10); 
-		assertEquals(counterRow3Horizontal++, 10); 
-		
-// =====The Chunk below is verified====
-//		assertFalse(Submarine.okToPlaceShipAt(3, 0, true, ocean));
-//		assertFalse(Submarine.okToPlaceShipAt(3, 0, false, ocean));
-//		assertFalse(Submarine.okToPlaceShipAt(3, 1, true, ocean));
-//		assertFalse(Submarine.okToPlaceShipAt(3, 1, false, ocean));
-//		assertFalse(Submarine.okToPlaceShipAt(3, 2, true, ocean));
-//		assertFalse(Submarine.okToPlaceShipAt(3, 2, false, ocean));
-//		assertFalse(Submarine.okToPlaceShipAt(3, 3, true, ocean));
-//		assertFalse(Submarine.okToPlaceShipAt(3, 3, false, ocean));
-//		assertFalse(Submarine.okToPlaceShipAt(3, 4, true, ocean));
-//		assertFalse(Submarine.okToPlaceShipAt(3, 4, false, ocean));
-//		assertFalse(Submarine.okToPlaceShipAt(3, 5, true, ocean));
-//		assertFalse(Submarine.okToPlaceShipAt(3, 5, false, ocean));
-//		assertFalse(Submarine.okToPlaceShipAt(3, 6, true, ocean));
-//		assertFalse(Submarine.okToPlaceShipAt(3, 6, false, ocean));
-//		assertFalse(Submarine.okToPlaceShipAt(3, 7, true, ocean));
-//		assertFalse(Submarine.okToPlaceShipAt(3, 7, false, ocean));
-//		assertFalse(Submarine.okToPlaceShipAt(3, 8, true, ocean));
-//		assertFalse(Submarine.okToPlaceShipAt(3, 8, false, ocean));
-//		assertFalse(Submarine.okToPlaceShipAt(3, 9, true, ocean));
-//		assertFalse(Submarine.okToPlaceShipAt(3, 9, false, ocean));
+		assertEquals(counterRow3Horizontal++, 10);
+	}
+	
+	/*
+	 * Tests whether the if-conditions returns false when there is already a ship in every spot in Ships 2D array
+	 * Note every RowX will have 10 vertical and 10 horizontal cases
+	 * Instead of doing the giant chunk commented out below, we used for loops
+	 * to count the number of falses. Since we put a submarine into every cell in 
+	 * the ships[][] 2D array, every new okToPlaceShip() will return false
+	 */
+	
+	/**=====================================
+	 * Checking Row4 horizontal and vertical 
+	 *=====================================
+	 */
 
-		/**=====================================
-		 * Checking Row4 horizontal and vertical 
-		 *=====================================
-		 */
+	@Test
+	void CheckOkToPlaceShipAtFalse4() {
+		int counterRow4Horizontal = 0;
+		int counterRow4Vertical = 0;
+
+
+		Submarine Submarine = new Submarine();
+		Ocean ocean = new Ocean();
+
+		//Put submarine in every cell in the ships[][] 2D array
+		for (int i = 0; i < 9; i++) {
+			for (int j = 0; j < 9; j++) {
+				ocean.setShips(i, j, Submarine);
+			}
+		}
+
 		for (int i = 0; i < 10; i++) {
 			if (!Submarine.okToPlaceShipAt(4, i, true, ocean)) {
 				counterRow4Horizontal++;
 			}
 		}
-		
+
 		for (int i = 0; i < 10; i++) {
 			if (!Submarine.okToPlaceShipAt(4, i, false, ocean)) {
 				counterRow4Vertical++;
@@ -653,40 +805,44 @@ class JunitTesting {
 		}
 		assertEquals(counterRow4Vertical++, 10); 
 		assertEquals(counterRow4Horizontal++, 10); 
-		
-// =====The Chunk below is verified====
-//		assertFalse(Submarine.okToPlaceShipAt(4, 0, true, ocean));
-//		assertFalse(Submarine.okToPlaceShipAt(4, 0, false, ocean));
-//		assertFalse(Submarine.okToPlaceShipAt(4, 1, true, ocean));
-//		assertFalse(Submarine.okToPlaceShipAt(4, 1, false, ocean));
-//		assertFalse(Submarine.okToPlaceShipAt(4, 2, true, ocean));
-//		assertFalse(Submarine.okToPlaceShipAt(4, 2, false, ocean));
-//		assertFalse(Submarine.okToPlaceShipAt(4, 3, true, ocean));
-//		assertFalse(Submarine.okToPlaceShipAt(4, 3, false, ocean));
-//		assertFalse(Submarine.okToPlaceShipAt(4, 4, true, ocean));
-//		assertFalse(Submarine.okToPlaceShipAt(4, 4, false, ocean));
-//		assertFalse(Submarine.okToPlaceShipAt(4, 5, true, ocean));
-//		assertFalse(Submarine.okToPlaceShipAt(4, 5, false, ocean));
-//		assertFalse(Submarine.okToPlaceShipAt(4, 6, true, ocean));
-//		assertFalse(Submarine.okToPlaceShipAt(4, 6, false, ocean));
-//		assertFalse(Submarine.okToPlaceShipAt(4, 7, true, ocean));
-//		assertFalse(Submarine.okToPlaceShipAt(4, 7, false, ocean));
-//		assertFalse(Submarine.okToPlaceShipAt(4, 8, true, ocean));
-//		assertFalse(Submarine.okToPlaceShipAt(4, 8, false, ocean));
-//		assertFalse(Submarine.okToPlaceShipAt(4, 9, true, ocean));
-//		assertFalse(Submarine.okToPlaceShipAt(4, 9, false, ocean));
-		
-		
-		/**=====================================
-		 * Checking Row5 horizontal and vertical 
-		 *=====================================
-		 */
+
+	}
+	
+	/*
+	 * Tests whether the if-conditions returns false when there is already a ship in every spot in Ships 2D array
+	 * Note every RowX will have 10 vertical and 10 horizontal cases
+	 * Instead of doing the giant chunk commented out below, we used for loops
+	 * to count the number of falses. Since we put a submarine into every cell in 
+	 * the ships[][] 2D array, every new okToPlaceShip() will return false
+	 */
+	
+	/**=====================================
+	 * Checking Row5 horizontal and vertical 
+	 *=====================================
+	 */
+
+	@Test
+	void CheckOkToPlaceShipAtFalse5() {
+		int counterRow5Horizontal = 0;
+		int counterRow5Vertical = 0;
+
+
+		Submarine Submarine = new Submarine();
+		Ocean ocean = new Ocean();
+
+		//Put submarine in every cell in the ships[][] 2D array
+		for (int i = 0; i < 9; i++) {
+			for (int j = 0; j < 9; j++) {
+				ocean.setShips(i, j, Submarine);
+			}
+		}
+
 		for (int i = 0; i < 10; i++) {
 			if (!Submarine.okToPlaceShipAt(5, i, true, ocean)) {
 				counterRow5Horizontal++;
 			}
 		}
-		
+
 		for (int i = 0; i < 10; i++) {
 			if (!Submarine.okToPlaceShipAt(5, i, false, ocean)) {
 				counterRow5Vertical++;
@@ -694,39 +850,43 @@ class JunitTesting {
 		}
 		assertEquals(counterRow5Vertical++, 10); 
 		assertEquals(counterRow5Horizontal++, 10);
-		
-		// =====The Chunk below is verified====
-//		assertFalse(Submarine.okToPlaceShipAt(5, 0, true, ocean));
-//		assertFalse(Submarine.okToPlaceShipAt(5, 0, false, ocean));
-//		assertFalse(Submarine.okToPlaceShipAt(5, 1, true, ocean));
-//		assertFalse(Submarine.okToPlaceShipAt(5, 1, false, ocean));
-//		assertFalse(Submarine.okToPlaceShipAt(5, 2, true, ocean));
-//		assertFalse(Submarine.okToPlaceShipAt(5, 2, false, ocean));
-//		assertFalse(Submarine.okToPlaceShipAt(5, 3, true, ocean));
-//		assertFalse(Submarine.okToPlaceShipAt(5, 3, false, ocean));
-//		assertFalse(Submarine.okToPlaceShipAt(5, 4, true, ocean));
-//		assertFalse(Submarine.okToPlaceShipAt(5, 4, false, ocean));
-//		assertFalse(Submarine.okToPlaceShipAt(5, 5, true, ocean));
-//		assertFalse(Submarine.okToPlaceShipAt(5, 5, false, ocean));
-//		assertFalse(Submarine.okToPlaceShipAt(5, 6, true, ocean));
-//		assertFalse(Submarine.okToPlaceShipAt(5, 6, false, ocean));
-//		assertFalse(Submarine.okToPlaceShipAt(5, 7, true, ocean));
-//		assertFalse(Submarine.okToPlaceShipAt(5, 7, false, ocean));
-//		assertFalse(Submarine.okToPlaceShipAt(5, 8, true, ocean));
-//		assertFalse(Submarine.okToPlaceShipAt(5, 8, false, ocean));
-//		assertFalse(Submarine.okToPlaceShipAt(5, 9, true, ocean));
-//		assertFalse(Submarine.okToPlaceShipAt(5, 9, false, ocean));
-		
-		/**=====================================
-		 * Checking Row6 horizontal and vertical 
-		 *=====================================
-		 */
+	}
+	
+	/*
+	 * Tests whether the if-conditions returns false when there is already a ship in every spot in Ships 2D array
+	 * Note every RowX will have 10 vertical and 10 horizontal cases
+	 * Instead of doing the giant chunk commented out below, we used for loops
+	 * to count the number of falses. Since we put a submarine into every cell in 
+	 * the ships[][] 2D array, every new okToPlaceShip() will return false
+	 */
+	
+	/**=====================================
+	 * Checking Row0 horizontal and vertical 
+	 *=====================================
+	 */
+
+	@Test
+	void CheckOkToPlaceShipAtFalse6() {
+		int counterRow6Horizontal = 0;
+		int counterRow6Vertical = 0;
+
+
+		Submarine Submarine = new Submarine();
+		Ocean ocean = new Ocean();
+
+		//Put submarine in every cell in the ships[][] 2D array
+		for (int i = 0; i < 9; i++) {
+			for (int j = 0; j < 9; j++) {
+				ocean.setShips(i, j, Submarine);
+			}
+		}
+
 		for (int i = 0; i < 10; i++) {
 			if (!Submarine.okToPlaceShipAt(6, i, true, ocean)) {
 				counterRow6Horizontal++;
 			}
 		}
-		
+
 		for (int i = 0; i < 10; i++) {
 			if (!Submarine.okToPlaceShipAt(6, i, false, ocean)) {
 				counterRow6Vertical++;
@@ -734,40 +894,44 @@ class JunitTesting {
 		}
 		assertEquals(counterRow6Vertical++, 10); 
 		assertEquals(counterRow6Horizontal++, 10);
-		
-		// =====The Chunk below is verified====
-//		assertFalse(Submarine.okToPlaceShipAt(6, 0, true, ocean));
-//		assertFalse(Submarine.okToPlaceShipAt(6, 0, false, ocean));
-//		assertFalse(Submarine.okToPlaceShipAt(6, 1, true, ocean));
-//		assertFalse(Submarine.okToPlaceShipAt(6, 1, false, ocean));
-//		assertFalse(Submarine.okToPlaceShipAt(6, 2, true, ocean));
-//		assertFalse(Submarine.okToPlaceShipAt(6, 2, false, ocean));
-//		assertFalse(Submarine.okToPlaceShipAt(6, 3, true, ocean));
-//		assertFalse(Submarine.okToPlaceShipAt(6, 3, false, ocean));
-//		assertFalse(Submarine.okToPlaceShipAt(6, 4, true, ocean));
-//		assertFalse(Submarine.okToPlaceShipAt(6, 4, false, ocean));
-//		assertFalse(Submarine.okToPlaceShipAt(6, 5, true, ocean));
-//		assertFalse(Submarine.okToPlaceShipAt(6, 5, false, ocean));
-//		assertFalse(Submarine.okToPlaceShipAt(6, 6, true, ocean));
-//		assertFalse(Submarine.okToPlaceShipAt(6, 6, false, ocean));
-//		assertFalse(Submarine.okToPlaceShipAt(6, 7, true, ocean));
-//		assertFalse(Submarine.okToPlaceShipAt(6, 7, false, ocean));
-//		assertFalse(Submarine.okToPlaceShipAt(6, 8, true, ocean));
-//		assertFalse(Submarine.okToPlaceShipAt(6, 8, false, ocean));
-//		assertFalse(Submarine.okToPlaceShipAt(6, 9, true, ocean));
-//		assertFalse(Submarine.okToPlaceShipAt(6, 9, false, ocean));
-		
-		
-		/**=====================================
-		 * Checking Row7 horizontal and vertical 
-		 *=====================================
-		 */
+
+	}
+	
+	/*
+	 * Tests whether the if-conditions returns false when there is already a ship in every spot in Ships 2D array
+	 * Note every RowX will have 10 vertical and 10 horizontal cases
+	 * Instead of doing the giant chunk commented out below, we used for loops
+	 * to count the number of falses. Since we put a submarine into every cell in 
+	 * the ships[][] 2D array, every new okToPlaceShip() will return false
+	 */
+	
+	/**=====================================
+	 * Checking Row7 horizontal and vertical 
+	 *=====================================
+	 */
+
+	@Test
+	void CheckOkToPlaceShipAtFalse7() {
+		int counterRow7Horizontal = 0;
+		int counterRow7Vertical = 0;
+
+
+		Submarine Submarine = new Submarine();
+		Ocean ocean = new Ocean();
+
+		//Put submarine in every cell in the ships[][] 2D array
+		for (int i = 0; i < 9; i++) {
+			for (int j = 0; j < 9; j++) {
+				ocean.setShips(i, j, Submarine);
+			}
+		}
+
 		for (int i = 0; i < 10; i++) {
 			if (!Submarine.okToPlaceShipAt(7, i, true, ocean)) {
 				counterRow7Horizontal++;
 			}
 		}
-		
+
 		for (int i = 0; i < 10; i++) {
 			if (!Submarine.okToPlaceShipAt(7, i, false, ocean)) {
 				counterRow7Vertical++;
@@ -775,39 +939,43 @@ class JunitTesting {
 		}
 		assertEquals(counterRow7Vertical++, 10); 
 		assertEquals(counterRow7Horizontal++, 10); 
-		
-		// =====The Chunk below is verified===
-//		assertFalse(Submarine.okToPlaceShipAt(7, 0, true, ocean));
-//		assertFalse(Submarine.okToPlaceShipAt(7, 0, false, ocean));
-//		assertFalse(Submarine.okToPlaceShipAt(7, 1, true, ocean));
-//		assertFalse(Submarine.okToPlaceShipAt(7, 1, false, ocean));
-//		assertFalse(Submarine.okToPlaceShipAt(7, 2, true, ocean));
-//		assertFalse(Submarine.okToPlaceShipAt(7, 2, false, ocean));
-//		assertFalse(Submarine.okToPlaceShipAt(7, 3, true, ocean));
-//		assertFalse(Submarine.okToPlaceShipAt(7, 3, false, ocean));
-//		assertFalse(Submarine.okToPlaceShipAt(7, 4, true, ocean));
-//		assertFalse(Submarine.okToPlaceShipAt(7, 4, false, ocean));
-//		assertFalse(Submarine.okToPlaceShipAt(7, 5, true, ocean));
-//		assertFalse(Submarine.okToPlaceShipAt(7, 5, false, ocean));
-//		assertFalse(Submarine.okToPlaceShipAt(7, 6, true, ocean));
-//		assertFalse(Submarine.okToPlaceShipAt(7, 6, false, ocean));
-//		assertFalse(Submarine.okToPlaceShipAt(7, 7, true, ocean));
-//		assertFalse(Submarine.okToPlaceShipAt(7, 7, false, ocean));
-//		assertFalse(Submarine.okToPlaceShipAt(7, 8, true, ocean));
-//		assertFalse(Submarine.okToPlaceShipAt(7, 8, false, ocean));
-//		assertFalse(Submarine.okToPlaceShipAt(7, 9, true, ocean));
-//		assertFalse(Submarine.okToPlaceShipAt(7, 9, false, ocean));
-		
-		/**=====================================
-		 * Checking Row8 horizontal and vertical 
-		 *=====================================
-		 */
+
+	}
+	
+	/*
+	 * Tests whether the if-conditions returns false when there is already a ship in every spot in Ships 2D array
+	 * Note every RowX will have 10 vertical and 10 horizontal cases
+	 * Instead of doing the giant chunk commented out below, we used for loops
+	 * to count the number of falses. Since we put a submarine into every cell in 
+	 * the ships[][] 2D array, every new okToPlaceShip() will return false
+	 */
+	
+	/**=====================================
+	 * Checking Row8 horizontal and vertical 
+	 *=====================================
+	 */
+
+	@Test
+	void CheckOkToPlaceShipAtFalse8() {
+		int counterRow8Horizontal = 0;
+		int counterRow8Vertical = 0;
+
+		Submarine Submarine = new Submarine();
+		Ocean ocean = new Ocean();
+
+		//Put submarine in every cell in the ships[][] 2D array
+		for (int i = 0; i < 9; i++) {
+			for (int j = 0; j < 9; j++) {
+				ocean.setShips(i, j, Submarine);
+			}
+		}
+
 		for (int i = 0; i < 10; i++) {
 			if (!Submarine.okToPlaceShipAt(8, i, true, ocean)) {
 				counterRow8Horizontal++;
 			}
 		}
-		
+
 		for (int i = 0; i < 10; i++) {
 			if (!Submarine.okToPlaceShipAt(8, i, false, ocean)) {
 				counterRow8Vertical++;
@@ -815,34 +983,37 @@ class JunitTesting {
 		}
 		assertEquals(counterRow8Vertical++, 10); 
 		assertEquals(counterRow8Horizontal++, 10); 
-		
-		// =====The Chunk below is verified===
-//		assertFalse(Submarine.okToPlaceShipAt(8, 0, true, ocean));
-//		assertFalse(Submarine.okToPlaceShipAt(8, 0, false, ocean));
-//		assertFalse(Submarine.okToPlaceShipAt(8, 1, true, ocean));
-//		assertFalse(Submarine.okToPlaceShipAt(8, 1, false, ocean));
-//		assertFalse(Submarine.okToPlaceShipAt(8, 2, true, ocean));
-//		assertFalse(Submarine.okToPlaceShipAt(8, 2, false, ocean));
-//		assertFalse(Submarine.okToPlaceShipAt(8, 3, true, ocean));
-//		assertFalse(Submarine.okToPlaceShipAt(8, 3, false, ocean));
-//		assertFalse(Submarine.okToPlaceShipAt(8, 4, true, ocean));
-//		assertFalse(Submarine.okToPlaceShipAt(8, 4, false, ocean));
-//		assertFalse(Submarine.okToPlaceShipAt(8, 5, true, ocean));
-//		assertFalse(Submarine.okToPlaceShipAt(8, 5, false, ocean));
-//		assertFalse(Submarine.okToPlaceShipAt(8, 6, true, ocean));
-//		assertFalse(Submarine.okToPlaceShipAt(8, 6, false, ocean));
-//		assertFalse(Submarine.okToPlaceShipAt(8, 7, true, ocean));
-//		assertFalse(Submarine.okToPlaceShipAt(8, 7, false, ocean));
-//		assertFalse(Submarine.okToPlaceShipAt(8, 8, true, ocean));
-//		assertFalse(Submarine.okToPlaceShipAt(8, 8, false, ocean));
-//		assertFalse(Submarine.okToPlaceShipAt(8, 9, true, ocean));
-//		assertFalse(Submarine.okToPlaceShipAt(8, 9, false, ocean));
-		
-		
-		/**=====================================
-		 * Checking Row8 horizontal and vertical 
-		 *=====================================
-		 */
+	}
+
+	
+	/*
+	 * Tests whether the if-conditions returns false when there is already a ship in every spot in Ships 2D array
+	 * Note every RowX will have 10 vertical and 10 horizontal cases
+	 * Instead of doing the giant chunk commented out below, we used for loops
+	 * to count the number of falses. Since we put a submarine into every cell in 
+	 * the ships[][] 2D array, every new okToPlaceShip() will return false
+	 */
+	
+	/**=====================================
+	 * Checking Row9 horizontal and vertical 
+	 *=====================================
+	 */
+	@Test
+	void CheckOkToPlaceShipAtFalse9() {
+
+		int counterRow9Horizontal = 0;
+		int counterRow9Vertical = 0;
+
+		Submarine Submarine = new Submarine();
+		Ocean ocean = new Ocean();
+
+		//Put submarine in every cell in the ships[][] 2D array
+		for (int i = 0; i < 9; i++) {
+			for (int j = 0; j < 9; j++) {
+				ocean.setShips(i, j, Submarine);
+			}
+		}
+
 		for (int i = 0; i < 10; i++) {
 			if (!Submarine.okToPlaceShipAt(9, i, true, ocean)) {
 				counterRow9Horizontal++;
@@ -855,30 +1026,9 @@ class JunitTesting {
 		}
 		assertEquals(counterRow9Vertical++, 10); 
 		assertEquals(counterRow9Horizontal++, 10);  
-		
-		// =====The Chunk below is verified===
-//		assertFalse(Submarine.okToPlaceShipAt(9, 0, true, ocean));
-//		assertFalse(Submarine.okToPlaceShipAt(9, 0, false, ocean));
-//		assertFalse(Submarine.okToPlaceShipAt(9, 1, true, ocean));
-//		assertFalse(Submarine.okToPlaceShipAt(9, 1, false, ocean));
-//		assertFalse(Submarine.okToPlaceShipAt(9, 2, true, ocean));
-//		assertFalse(Submarine.okToPlaceShipAt(9, 2, false, ocean));
-//		assertFalse(Submarine.okToPlaceShipAt(9, 3, true, ocean));
-//		assertFalse(Submarine.okToPlaceShipAt(9, 3, false, ocean));
-//		assertFalse(Submarine.okToPlaceShipAt(9, 4, true, ocean));
-//		assertFalse(Submarine.okToPlaceShipAt(9, 4, false, ocean));
-//		assertFalse(Submarine.okToPlaceShipAt(9, 5, true, ocean));
-//		assertFalse(Submarine.okToPlaceShipAt(9, 5, false, ocean));
-//		assertFalse(Submarine.okToPlaceShipAt(9, 6, true, ocean));
-//		assertFalse(Submarine.okToPlaceShipAt(9, 6, false, ocean));
-//		assertFalse(Submarine.okToPlaceShipAt(9, 7, true, ocean));
-//		assertFalse(Submarine.okToPlaceShipAt(9, 7, false, ocean));
-//		assertFalse(Submarine.okToPlaceShipAt(9, 8, true, ocean));
-//		assertFalse(Submarine.okToPlaceShipAt(9, 8, false, ocean));
-//		assertFalse(Submarine.okToPlaceShipAt(9, 9, true, ocean));
-//		assertFalse(Submarine.okToPlaceShipAt(9, 9, false, ocean));
+
 	}
-	
+
 	//Testing if ship row setters/getters work as expected
 	@Test
 	void CheckShipSettersGettersRow() {
@@ -907,11 +1057,6 @@ class JunitTesting {
 
 	}
 
-	//Testing if ship can be placed ===========================
-	@Test
-	void CheckokToPlaceShipAt() {
-		//TODO need to test placeships
-	}
 
 	//TESTING OCEAN ==================================================================
 
@@ -932,7 +1077,7 @@ class JunitTesting {
 		assertFalse(ocean.shootAt(9, 9));
 
 	}
-	
+
 	//Test if shotsFired is updated as expected when there is a ship there at the fired location
 	@Test 
 	void CheckShotsFired2() {
@@ -943,7 +1088,7 @@ class JunitTesting {
 
 
 	}
-	
+
 	//Test getShipsType to see if it doesn't return null
 	@Test
 	void checkGetShipsType() {
@@ -952,9 +1097,9 @@ class JunitTesting {
 
 		//There is already a submarine in the ship[][] 2D from testing above 
 		assertNotNull(ocean.getshipsType(2, 3));
-		
+
 	}
-	
+
 
 	//Test if shotsFired is updated as expected, this test no shots are fired, so Hitscount(); must be zero
 	@Test 
@@ -971,19 +1116,19 @@ class JunitTesting {
 		Ocean ocean = new Ocean();
 		ocean.setShipsSunk(10);
 		assertTrue(ocean.isGameOver());
-		
+
 	}
-	
+
 	//Test isGameOver() when shipsSunk < 10
 	@Test 
 	void IsGameOver2() {
 		Ocean ocean = new Ocean();
 		ocean.setShipsSunk(9);
 		assertFalse(ocean.isGameOver());
-		
+
 	}
-	
-	
+
+
 	//Test if shipsSunk getter works as expected
 	@Test 
 	void CheckShipsSunk() {
@@ -1014,24 +1159,54 @@ class JunitTesting {
 		ocean.setUserInputs(input);
 		assertNotNull(ocean.userInputs.get(0));
 	}
-	
-	
+
+
 	/**
-	 * Test shootAt method to see if it updates the hit[] array within the ship when the
-	 * location [row][column] contains a ship
+	 * Test shootAt method to see if it returns true when ship is in
+	 * location [row][column] contains a ship and it is horizontal and IS NOT SUNK
 	 */
-	
+
 	@Test
 	void CheckShootAt() {
-		//TODO
-//		Destroyer Destroyer = new Destroyer();
-//		Ocean ocean = new Ocean();
-//		
-//        Destroyer.placeShipAt(2, 2, true, ocean);
-//        
-//        ocean.shootAt(2, 2);
-        
+		Destroyer Destroyer = new Destroyer();
+		Ocean ocean = new Ocean();
 
+		Destroyer.placeShipAt(2, 2, true, ocean);
+		
+		assertTrue(Destroyer.shootAt(2, 2));
+	}
+	
+	/**
+	 * Test shootAt method to see if it returns true when ship is in
+	 * location [row][column] contains a ship and it is vertical and IS NOT SUNK
+	 */
+
+	@Test
+	void CheckShootAt2() {
+		Destroyer Destroyer = new Destroyer();
+		Ocean ocean = new Ocean();
+
+		Destroyer.placeShipAt(2, 2, false, ocean);
+		
+		assertTrue(Destroyer.shootAt(2, 2));
+	}
+	
+	/**
+	 * Test shootAt method to see if it updates returns true when ship is in
+	 * location [row][column] contains a ship and it is vertical and is SUNK
+	 */
+
+	@Test
+	void CheckShootAt3() {
+		Destroyer Destroyer = new Destroyer();
+		Destroyer.hit[0] = true;
+		Destroyer.hit[1] = true;
+		
+		Ocean ocean = new Ocean();
+
+		Destroyer.placeShipAt(2, 2, false, ocean);
+		
+		assertFalse(Destroyer.shootAt(2, 2));
 	}
 
 }

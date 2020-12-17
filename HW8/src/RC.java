@@ -43,9 +43,9 @@ public class RC {
 		}
 	}
 	
+	
 	public void powerSet(int[] arr) {
 
-		
 		//Base case: empty array
 		if (arr.length == 0) {
 			System.out.println("[]");
