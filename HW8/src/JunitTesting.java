@@ -950,7 +950,32 @@ class JunitTesting {
 		ocean.setUserInputs(input);
 		assertNotNull(ocean.userInputs.get(0));
 	}
+	
+	
+	/**
+	 * Test shootAt method to see if it updates the hit[] array within the ship when the
+	 * location [row][column] contains a ship
+	 */
+	
+	@Test
+	void CheckShootAt() {
+		
+		//Testing above put submarines into Ships[][] global array. Following Forloop is to clear
+		Destroyer Destroyer = new Destroyer();
+		Ocean oceanTest = new Ocean();
+		
+		for (int i = 0; i < 10; i ++) {
+			for (int j = 0; j < 10; j++) {
 
 
+			}
+		}
+
+		oceanTest.setShips(1, 1, Destroyer);
+		
+	 assertTrue(oceanTest.shootAt(1, 1));
+		
+		
+	}
 
 }
