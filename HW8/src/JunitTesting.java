@@ -226,17 +226,15 @@ class JunitTesting {
 	@Test
 	void CheckPlaceShips() {
 		Battleship test = new Battleship();
-		Battleship test2 = new Battleship();
+		Cruiser test2 = new Cruiser();
 		Ocean ocean = new Ocean();
 
 		test.placeShipAt(5, 0, true, ocean);
-		test.placeShipAt(0, 5, false, ocean);
+		test2.placeShipAt(0, 5, false, ocean);
+		
 
-
-		//TODO NOT SURE HOW TO TEST THIS//TODO NOT SURE HOW TO TEST THIS
-		//TODO NOT SURE HOW TO TEST THIS
-		//TODO NOT SURE HOW TO TEST THIS
-		//TODO NOT SURE HOW TO TEST THIS
+		assertTrue(ocean.getshipsType(5, 0).contains("Battleship"));
+		assertTrue(ocean.getshipsType(0, 5).contains("Cruiser"));
 
 	}
 	//This will test the if-conditionals in CheckOkToPlaceShipAt returns true without any ships already placed
@@ -945,6 +943,8 @@ class JunitTesting {
 
 
 	}
+	
+	//Test getShipsType to see if it doesn't return null
 
 	//Test if shotsFired is updated as expected, this test no shots are fired, so Hitscount(); must be zero
 	@Test 
