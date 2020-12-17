@@ -1,19 +1,20 @@
 import java.util.*;
 
 public class GameRunner {
-	int runningScore = 101;
+	int runningScore = 1000;
 
 	public void RunGame() {
 		Scanner s = new Scanner(System.in);
 		Ocean ocean = new Ocean();
 		ocean.placeAllShipsRandomly();
+		//System.out.println("Here!");
 
 		ocean.print();
 
 		//plse delete
 		//ocean.shipsSunk = 10;
 		while (!ocean.isGameOver()) {
-			System.out.print("Please input your row you want to fire on: ");
+			System.out.print("Please input the row you want to fire on: ");
 			while (!s.hasNextInt()) { 
 				System.out.print("Please input a positive row number less than 10: ");
 				s.next();
@@ -29,7 +30,7 @@ public class GameRunner {
 			}
 			int rowNum = input;
 
-			System.out.print("Please input your column you want to fire on: ");
+			System.out.print("Please input the column you want to fire on: ");
 			while (!s.hasNextInt()) { 
 				System.out.print("Please input a positive column number less than 10: ");
 				s.next();
@@ -73,39 +74,16 @@ public class GameRunner {
 		System.out.println("The number of shots you had was: " + ocean.getShotsFired());
 		System.out.println("Your lowest shots were: " + runningScore);
 		System.out.println("The number of hits you had was: " + ocean.getHitsCount());
-		System.out.println("Thanks for playing!");
+		System.out.println();
 
-
-		//		System.out.print("Would you like to play again? Please hit 1 for yes 2 for no: ");
-		//		while (!s.hasNextInt()) { 
-		//			System.out.print("Please input 1 (yes) or 2 (no): ");
-		//			s.next();
-		//		}
-		//		int input3 = s.nextInt();
-		//		while(input3 > 2 || input3 < 0) {
-		//			System.out.print("Please input 1 (yes) or 2 (no): ");
-		//			while (!s.hasNextInt()) {
-		//				System.out.print("Please input 1 (yes) or 2 (no): ");
-		//				s.next();
-		//			}
-		//			input3 = s.nextInt();
-		//		}
-		//		if (input3 == 1) {
-		//			System.out.println("Back for more?");
-		//			this.RunGame();
-		//		}
-		//		else {
-		//			System.out.println("All good! Thanks for playing!");
-		//		}
-		//	}
 	}
-	public void runAgain() {
+	public void RunAgain() {
 		Scanner s = new Scanner(System.in);	
 		//this.RunGame();
 		int input3 = 1;
 		while (input3 == 1) {
-			GameRunner r = new GameRunner();
-			r.RunGame();
+			//GameRunner r = new GameRunner();
+			this.RunGame();
 			
 
 		//	this.RunGame();
@@ -136,14 +114,16 @@ public class GameRunner {
 //				System.out.println("All good! Thanks for playing!");
 //			}
 		}
+		System.out.println("Thanks for playing!");
 	}
 
 
 
 	public static void main(String[] args) {
 		GameRunner r = new GameRunner();
-		r.RunGame();
-		System.out.println("finished 1");
+		r.RunAgain();
+		//r.RunGame();
+	//	System.out.println("finished 1");
 //		GameRunner s = new GameRunner();
 //		s.RunGame();
 		//r.RunGame();

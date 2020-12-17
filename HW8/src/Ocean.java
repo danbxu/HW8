@@ -3,11 +3,11 @@ import java.util.*;
 
 public class Ocean {
 
-	public static Ship[][] ships = new Ship[10][10];
+	public Ship[][] ships = new Ship[10][10];
 	int shotsFired; 
 	int hitCount; //hit shit, increase it but hitting the same spot don't increase it
 	int shipsSunk; //increment to 10 total ships sunk
-	static ArrayList<int[]> userInputs = new ArrayList<int[]>();
+	ArrayList<int[]> userInputs = new ArrayList<int[]>();
 	int[] input = new int[2];
 
 	Random randomRow = new Random();
@@ -81,7 +81,7 @@ public class Ocean {
 	 * @param userInputs
 	 */
 	public void setUserInputs(int[] input) {
-		Ocean.userInputs.add(input);
+		userInputs.add(input);
 	}
 
 	/*
@@ -101,6 +101,8 @@ public class Ocean {
 	 * It will iterate through all the ships in fleet, from largest (Battleship) to smallest (Submarine).
 	 */
 	public void placeAllShipsRandomly() { //feed in a ship so that the code is cleaner
+		
+		//System.out.println("In place ships");
 
 
 		Ship battleship = new Battleship();
