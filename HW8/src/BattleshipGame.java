@@ -8,6 +8,10 @@ import java.util.*;
 public class BattleshipGame {
 	int runningScore = 1000; //keeping an upper bound so the user's first score is the lowest score 
 
+	/**
+	 * This method will run the game and initialize the ocean and print the map and will continue to run until
+	 * isGameOver() is true (when the player sinks all 10 ships)
+	 */
 	public void RunGame() {
 		Scanner s = new Scanner(System.in);
 		Ocean ocean = new Ocean(); //create new ocean
