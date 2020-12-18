@@ -73,6 +73,16 @@ public class RecursiveQuestion {
 	 * @param arr
 	 */
 	public void powerSet(int[] arr) {
+
+		//this for loop throws error if user's arr has repeated integers (i.e {1,2,3,3} will throw exception)
+		for (int i = 0; i < arr.length; i ++) { 
+			for (int j = i + 1; j < arr.length; j++) {
+				if(arr[i] == arr[j]) { 
+					throw new IllegalArgumentException ("int[] arr must only contain distinct integers");
+				}
+			}
+		}
+
 		ArrayList<Integer> current = new ArrayList<>();
 		List<List<Integer>> powerSet = new ArrayList<>();
 		int start = 0;
@@ -106,27 +116,27 @@ public class RecursiveQuestion {
 		}
 
 	}
-
+//
 //	public static void main(String[] args) {
-
-				//Test cases 
-//				System.out.println(killCommas("a,c"));
-//				System.out.println(killCommas(",abc,d"));
-//				System.out.println(killCommas(",___,"));
-//				System.out.println(killCommas(",_,_,"));
-//				System.out.println(killCommas(",,,"));
-//				System.out.println(killCommas("lma,o,"));
-//				System.out.println(killCommas(",,"));
-//				System.out.println(killCommas("a,c,d,,,"));
-////				System.out.println(killCommas("")); //For testing empty
-//				System.out.println(sumDigits(111)); 
-//				System.out.println(sumDigits(123));
-//				System.out.println(sumDigits(456));
-//				
-//				RecursiveQuestion a = new RecursiveQuestion();
-//				int[] arr = {1,2,3};
-//				a.powerSet(arr);
-
+//
+//		//Test cases 
+//		//				System.out.println(killCommas("a,c"));
+//		//				System.out.println(killCommas(",abc,d"));
+//		//				System.out.println(killCommas(",___,"));
+//		//				System.out.println(killCommas(",_,_,"));
+//		//				System.out.println(killCommas(",,,"));
+//		//				System.out.println(killCommas("lma,o,"));
+//		//				System.out.println(killCommas(",,"));
+//		//				System.out.println(killCommas("a,c,d,,,"));
+//		////				System.out.println(killCommas("")); //For testing empty
+//		//				System.out.println(sumDigits(111)); 
+//		//				System.out.println(sumDigits(123));
+//		//				System.out.println(sumDigits(456));
+//		//				
+//		RecursiveQuestion a = new RecursiveQuestion();
+//		int[] arr = {1,2,3,4};
+//		a.powerSet(arr);
+//
 //	}
 }
 
