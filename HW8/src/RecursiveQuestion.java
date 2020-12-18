@@ -107,7 +107,7 @@ public class RecursiveQuestion {
 
 	}
 
-	public static void main(String[] args) {
+//	public static void main(String[] args) {
 
 				//Test cases 
 //				System.out.println(killCommas("a,c"));
@@ -127,7 +127,7 @@ public class RecursiveQuestion {
 //				int[] arr = {1,2,3};
 //				a.powerSet(arr);
 
-	}
+//	}
 }
 
 
