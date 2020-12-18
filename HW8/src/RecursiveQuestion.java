@@ -8,7 +8,7 @@ import java.util.List;
  *
  */
 
-//=========This is the RecursiveQuestion==========
+
 public class RecursiveQuestion {
 
 	static int digit = 0;
