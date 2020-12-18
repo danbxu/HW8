@@ -110,22 +110,22 @@ public class RecursiveQuestion {
 	public static void main(String[] args) {
 
 				//Test cases 
-				System.out.println(killCommas("a,c"));
-				System.out.println(killCommas(",abc,d"));
-				System.out.println(killCommas(",___,"));
-				System.out.println(killCommas(",_,_,"));
-				System.out.println(killCommas(",,,"));
-				System.out.println(killCommas("lma,o,"));
-				System.out.println(killCommas(",,"));
-				System.out.println(killCommas("a,c,d,,,"));
-//				System.out.println(killCommas("")); //For testing empty
-				System.out.println(sumDigits(111)); 
-				System.out.println(sumDigits(123));
-				System.out.println(sumDigits(456));
-				
-				RecursiveQuestion a = new RecursiveQuestion();
-				int[] arr = {1,2,3};
-				a.powerSet(arr);
+//				System.out.println(killCommas("a,c"));
+//				System.out.println(killCommas(",abc,d"));
+//				System.out.println(killCommas(",___,"));
+//				System.out.println(killCommas(",_,_,"));
+//				System.out.println(killCommas(",,,"));
+//				System.out.println(killCommas("lma,o,"));
+//				System.out.println(killCommas(",,"));
+//				System.out.println(killCommas("a,c,d,,,"));
+////				System.out.println(killCommas("")); //For testing empty
+//				System.out.println(sumDigits(111)); 
+//				System.out.println(sumDigits(123));
+//				System.out.println(sumDigits(456));
+//				
+//				RecursiveQuestion a = new RecursiveQuestion();
+//				int[] arr = {1,2,3};
+//				a.powerSet(arr);
 
 	}
 }
